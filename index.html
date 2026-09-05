@@ -1634,7 +1634,28 @@ button{font-family:inherit}
     </div>
 
     <div id="gear-panel-codex" class="" data-doubao-translate-traverse-mark="1" data-scu-ref="e341">
-      <div class="dx-sub" style="margin-bottom:8px" data-doubao-translate-traverse-mark="1" data-scu-ref="e342">词条图鉴：掉落装备为 Lv.1~10，属性随关卡等级提升；每件装备随机含 3 种不同词条。</div>
+      <div class="dx-sub" style="margin-bottom:8px">词条图鉴：掉落装备为 Lv.1~10，属性随关卡等级提升；每件装备随机含 3 种不同词条。</div>
+      <div style="background:rgba(255,255,255,.05);border-radius:8px;padding:12px;margin-bottom:12px;font-size:13px;line-height:1.8">
+        <div style="font-weight:700;margin-bottom:6px;color:#fbbf24">🎲 肉鸽模式装备掉落说明</div>
+        <div><b>装备名称颜色（按掉落层数区分）：</b></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin:4px 0 8px">
+          <span style="color:#e5e7eb">⬜ 1-10层 普通</span>
+          <span style="color:#4ade80">🟩 11-20层 精良</span>
+          <span style="color:#60a5fa">🟦 21-30层 稀有</span>
+          <span style="color:#c084fc">🟪 31-40层 史诗</span>
+          <span style="color:#fbbf24">🟨 41-50层 传说</span>
+        </div>
+        <div><b>词条颜色（按数值浮动区间分5档，掉落时固定不随强化变化）：</b></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin:4px 0 8px">
+          <span style="color:#e5e7eb">⬜ 0-20%分位</span>
+          <span style="color:#4ade80">🟩 20-40%分位</span>
+          <span style="color:#60a5fa">🟦 40-60%分位</span>
+          <span style="color:#c084fc">🟪 60-80%分位</span>
+          <span style="color:#fbbf24">🟨 80-100%分位</span>
+        </div>
+        <div><b>词条生成规则：</b>每件装备固定3个随机词条，词条数值在对应等级的浮动范围内随机生成。16层后可掉落🩸吸血词条，30层后可掉落🔄反伤词条。装备掉落等级随层数提升：2+层数/2级（最高10级），显示等级为1级但实际属性为掉落等级。</div>
+        <div style="margin-top:4px"><b>强化：</b>装备最高可强化至50级，强化提升词条数值（递减成长率），不改变词条颜色。售卖价格约为强化总费用的110%。</div>
+      </div>
       <div class="gear-affix-grid" id="gear-affix-grid" data-doubao-translate-traverse-mark="1" data-scu-ref="e343"><div class="affix-codex" data-scu-ref="e344"><h5 data-scu-ref="e345">❤️ 生命</h5><p data-scu-ref="e346">直接提高生命上限</p>
       <span class="range" data-scu-ref="e347">示例：Lv.1 约 +25 ｜ Lv.20 约 +500</span></div><div class="affix-codex" data-scu-ref="e348"><h5 data-scu-ref="e349">⚔️ 物攻</h5><p data-scu-ref="e350">直接提高物理攻击</p>
       <span class="range" data-scu-ref="e351">示例：Lv.1 约 +2 ｜ Lv.20 约 +46</span></div><div class="affix-codex" data-scu-ref="e352"><h5 data-scu-ref="e353">🔮 魔攻</h5><p data-scu-ref="e354">直接提高魔法攻击</p>
@@ -1786,11 +1807,12 @@ function rollGearDrop(level, floor){
     if(a.key==='reflect' && floor < 30) return false;   // 30层后才出反伤
     return true;
   });
-  // 固定3个随机词条
+  // 固定3个随机词条，掉落时固定颜色（基于dropLevel，不随强化等级变化）
   const keys=available.map(a=>a.key).sort(()=>Math.random()-0.5).slice(0,3);
   const affixes=keys.map(key=>{
     const v=rollAffixValue(key, level);
-    return {key, value:v, pct:gearAffixInfo(key).pct};
+    const affixColor = getAffixColor(key, level, v);
+    return {key, value:v, pct:gearAffixInfo(key).pct, color:affixColor};
   });
   const icon=GEAR_AFFIXES[Math.floor(Math.random()*GEAR_AFFIXES.length)].icon;
   // 按层数分5个层次，用颜色区分装备名称（仅区分层数产出）
@@ -4466,7 +4488,7 @@ function renderRlDrops(drops){
   drops.forEach(it=>{
     const card = document.createElement('div');
     card.className = 'rl-gear-card';
-    const affixHtml = (it.affixes||[]).map(a=>`<div style="font-size:11px;color:var(--muted)">${E.gearAffixText(it, it.affixes.indexOf(a))}</div>`).join('');
+    const affixHtml = (it.affixes||[]).map(a=>`<div style="font-size:11px;color:${a.color||'var(--muted)'}">${E.gearAffixText(it, it.affixes.indexOf(a))}</div>`).join('');
     const tierColor = it.tierColor || '#e5e7eb';
     const tierName = it.tierName || '';
     card.innerHTML = `
@@ -4641,7 +4663,8 @@ function renderRlGearList(){
       if(a.value){
         const info = E.gearAffixInfo(a.key);
         const displayVal = a.pct ? a.value.toFixed(1) : (a.value >= 10 ? Math.round(a.value) : a.value.toFixed(1));
-        stats.push((info?info.name:a.key)+'+'+displayVal+(a.pct?'%':''));
+        const affixColor = a.color || '#e5e7eb';
+        stats.push('<span style="color:'+affixColor+'">'+(info?info.name:a.key)+'+'+displayVal+(a.pct?'%':'')+'</span>');
       }
     });
     const itemTierColor = g.tierColor || '#e5e7eb';
@@ -4679,7 +4702,7 @@ function renderRlGearDetail(){
     if(a.value){
       const info = E.gearAffixInfo(a.key);
       const displayVal = a.pct ? a.value.toFixed(1) : (a.value >= 10 ? Math.round(a.value) : a.value.toFixed(1));
-      const affixColor = E.getAffixColor ? E.getAffixColor(a.key, g.level||1, a.value) : '#e5e7eb';
+      const affixColor = a.color || '#e5e7eb'; // 使用掉落时固定的颜色
       stats.push(`<div style="color:${affixColor}">${info?info.icon+' '+info.name:a.key}: +${displayVal}${a.pct?'%':''}</div>`);
     }
   });
