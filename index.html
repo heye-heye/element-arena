@@ -2043,7 +2043,74 @@ const HEROES = [
        fx:[{k:'dmg', mult:0.9, scope:'allEnemy'}]}
     ],
     {name:'大地震怒', target:'allEnemy', desc:'全体 1.6 倍伤害，并削减敌方法抗 15%（2 回合）。',
-     fx:[{k:'dmg', mult:1.6, scope:'allEnemy'},{k:'debuffMdef', pct:0.15, turns:2, scope:'allEnemy'}]})
+     fx:[{k:'dmg', mult:1.6, scope:'allEnemy'},{k:'debuffMdef', pct:0.15, turns:2, scope:'allEnemy'}]}),
+  /* ===== 新增6英雄 ===== */
+  H('yanlong','炎龙','炎龙武者','warrior','fire',{hp:920,atk:118,def:55,matk:98,mdef:52},
+    {type:'hybridBoost', name:'龙焰共鸣', desc:'造成魔法伤害时额外+20%，造成物理伤害时+10%'},
+    '龙爪', [
+      {key:'s1', name:'烈焰龙爪', cost:2, target:'enemy', desc:'造成1.5倍攻击伤害+0.8倍魔攻的火焰混伤。',
+       fx:[{k:'dmg', mult:1.5, scope:'enemy'},{k:'dmg', mult:0.8, mag:true, scope:'enemy'}]},
+      {key:'s2', name:'龙息焚天', cost:3, target:'allEnemy', desc:'全体1.0倍攻击+0.6倍魔攻混伤，目标防御-15%（2回合）。',
+       fx:[{k:'dmg', mult:1.0, scope:'allEnemy'},{k:'dmg', mult:0.6, mag:true, scope:'allEnemy'},{k:'debuffDef', pct:0.15, turns:2, scope:'allEnemy'}]}
+    ],
+    {name:'真龙降临', target:'allEnemy', desc:'全体1.3倍攻击+1.0倍魔攻混伤，自身攻击和魔攻+15%（2回合）。',
+     fx:[{k:'dmg', mult:1.3, scope:'allEnemy'},{k:'dmg', mult:1.0, mag:true, scope:'allEnemy'},{k:'buffAtk', pct:0.15, turns:2, scope:'self'},{k:'buffMatk', pct:0.15, turns:2, scope:'self'}]}),
+
+  H('cuiying','翠影','翠影舞者','assassin','grass',{hp:740,atk:158,def:40,matk:55,mdef:38},
+    {type:'comboGrowth', name:'连击精通', desc:'每次技能命中后，下次攻击伤害+10%（最多3层）', ratio:0.10},
+    '影袭', [
+      {key:'s1', name:'翠叶连舞', cost:2, target:'enemy', desc:'连续攻击4次，每次0.5倍攻击。',
+       fx:[{k:'dmg', mult:0.5, hits:4, scope:'enemy'}]},
+      {key:'s2', name:'影杀突刺', cost:3, target:'enemy', desc:'2.2倍攻击伤害，目标防御-20%（2回合），自身充能+1。',
+       fx:[{k:'dmg', mult:2.2, scope:'enemy'},{k:'debuffDef', pct:0.20, turns:2, scope:'enemy'},{k:'energy', amt:1, scope:'self'}]}
+    ],
+    {name:'千影幻杀', target:'enemy', desc:'连续攻击6次，每次0.55倍攻击，无视20%防御。',
+     fx:[{k:'dmg', mult:0.55, hits:6, scope:'enemy'}]}),
+
+  H('xuanbing','玄冰','玄冰守卫','tank','water',{hp:1180,atk:95,def:92,matk:65,mdef:88},
+    {type:'frostArmor', name:'冰霜护甲', desc:'受到伤害时25%概率使攻击者攻击-15%（2回合），自身防御+5%', ratio:0.25},
+    '冰击', [
+      {key:'s1', name:'冰霜重击', cost:2, target:'enemy', desc:'1.3倍攻击伤害，目标攻击-20%（2回合）。',
+       fx:[{k:'dmg', mult:1.3, scope:'enemy'},{k:'debuffAtk', pct:0.20, turns:2, scope:'enemy'}]},
+      {key:'s2', name:'极寒壁垒', cost:3, target:'self', desc:'自身获得2.5倍攻击护盾，全体友军法抗+15%（2回合）。',
+       fx:[{k:'shield', mult:2.5, scope:'self'},{k:'buffMdef', pct:0.15, turns:2, scope:'allAlly'}]}
+    ],
+    {name:'冰封万里', target:'allEnemy', desc:'全体1.2倍攻击伤害，目标攻击和速度-15%（2回合），自身获得180护盾。',
+     fx:[{k:'dmg', mult:1.2, scope:'allEnemy'},{k:'debuffAtk', pct:0.15, turns:2, scope:'allEnemy'},{k:'shield', v:180, scope:'self'}]}),
+
+  H('zidian','紫电','紫电贤者','mage','elec',{hp:760,atk:55,def:38,matk:158,mdef:52},
+    {type:'overcharge', name:'过载', desc:'充能高于50%时技能伤害+15%，释放技能后额外+1充能'},
+    '电浆弹', [
+      {key:'s1', name:'电弧冲击', cost:2, target:'enemy', desc:'1.8倍魔攻雷电伤害，目标法抗-15%（2回合）。',
+       fx:[{k:'dmg', mult:1.8, scope:'enemy'},{k:'debuffMdef', pct:0.15, turns:2, scope:'enemy'}]},
+      {key:'s2', name:'雷云密布', cost:3, target:'allEnemy', desc:'全体0.95倍魔攻伤害，30%概率使目标眩晕1回合。',
+       fx:[{k:'dmg', mult:0.95, scope:'allEnemy'}]}
+    ],
+    {name:'天罚雷霆', target:'allEnemy', desc:'全体1.6倍魔攻雷电伤害，自身魔攻+20%（2回合）。',
+     fx:[{k:'dmg', mult:1.6, scope:'allEnemy'},{k:'buffMatk', pct:0.20, turns:2, scope:'self'}]}),
+
+  H('xiangkong','翔空','翔空祭司','support','wind',{hp:800,atk:62,def:44,matk:128,mdef:60},
+    {type:'tailwind', name:'顺风', desc:'己方释放技能时20%概率返还1点支援点', ratio:0.20},
+    '风刃', [
+      {key:'s1', name:'翔空祝福', cost:2, target:'ally', desc:'友军攻击+20%和速度+15%（2回合），充能+1。',
+       fx:[{k:'buffAtk', pct:0.20, turns:2, scope:'ally'},{k:'energy', amt:1, scope:'ally'}]},
+      {key:'s2', name:'风之壁障', cost:3, target:'allAlly', desc:'全体友军获得150护盾，治疗0.8倍魔攻生命。',
+       fx:[{k:'shield', v:150, scope:'allAlly'},{k:'heal', mult:0.8, scope:'allAlly'}]}
+    ],
+    {name:'天风庇护', target:'allAlly', desc:'全体友军恢复1.3倍魔攻生命，充能+2，获得120护盾。',
+     fx:[{k:'heal', mult:1.3, scope:'allAlly'},{k:'energy', amt:2, scope:'allAlly'},{k:'shield', v:120, scope:'allAlly'}]}),
+
+  H('yankai','岩铠','岩铠斗士','warrior','earth',{hp:1050,atk:128,def:78,matk:55,mdef:72},
+    {type:'shieldSmash', name:'盾击', desc:'拥有护盾时技能伤害+20%，护盾被打破时对攻击者造成0.5倍攻击反伤'},
+    '岩拳', [
+      {key:'s1', name:'裂地猛击', cost:2, target:'enemy', desc:'1.6倍攻击伤害，自身获得120护盾。',
+       fx:[{k:'dmg', mult:1.6, scope:'enemy'},{k:'shield', v:120, scope:'self'}]},
+      {key:'s2', name:'岩铠冲锋', cost:3, target:'enemy', desc:'1.9倍攻击伤害，目标防御-20%（2回合），护盾存在时额外+30%伤害。',
+       fx:[{k:'dmg', mult:1.9, scope:'enemy'},{k:'debuffDef', pct:0.20, turns:2, scope:'enemy'}]}
+    ],
+    {name:'山崩地裂', target:'allEnemy', desc:'全体1.4倍攻击伤害，全体友军获得100护盾，自身防御+20%（2回合）。',
+     fx:[{k:'dmg', mult:1.4, scope:'allEnemy'},{k:'shield', v:100, scope:'allAlly'},{k:'buffDef', pct:0.20, turns:2, scope:'self'}]}),
+
 ];
 
 /* 剧情/自由对战专用怪物 & Boss（同样完整技能结构） */
@@ -2242,7 +2309,184 @@ const NEW_BEASTS = [
        fx:[{k:'dmg',mult:1.0,scope:'allEnemy'}]}
     ],
     {name:'魔像审判', target:'allEnemy', desc:'全体1.65倍伤害，自身获得200护盾。',
-     fx:[{k:'dmg',mult:1.65,scope:'allEnemy'},{k:'shield',v:200,scope:'self'}]})
+     fx:[{k:'dmg',mult:1.65,scope:'allEnemy'},{k:'shield',v:200,scope:'self'}]}),
+  /* ===== 新增16敌人 ===== */
+  H('beast_lava','熔岩巨人','炼狱守护者','warrior','fire',{hp:980,atk:138,def:68,matk:62,mdef:55},
+    {type:'warCry', name:'熔岩暴怒', desc:'每次释放技能后攻击+6%（最多3层）', ratio:0.06},
+    '熔岩拳', [
+      {key:'s1', name:'岩浆冲击', cost:2, target:'enemy', desc:'1.75倍攻击火焰伤害，目标防御-15%（2回合）。',
+       fx:[{k:'dmg',mult:1.75,scope:'enemy'},{k:'debuffDef',pct:0.15,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'烈焰喷发', cost:3, target:'allEnemy', desc:'全体1.0倍火焰伤害，自身攻击+15%（2回合）。',
+       fx:[{k:'dmg',mult:1.0,scope:'allEnemy'},{k:'buffAtk',pct:0.15,turns:2,scope:'self'}]}
+    ],
+    {name:'地狱熔岩', target:'allEnemy', desc:'全体1.55倍火焰伤害，自身获得160护盾。',
+     fx:[{k:'dmg',mult:1.55,scope:'allEnemy'},{k:'shield',v:160,scope:'self'}]}),
+
+  H('beast_inferno','炎狱魔女','深渊女巫','mage','fire',{hp:780,atk:58,def:40,matk:162,mdef:58},
+    {type:'skillSP', name:'地狱契约', desc:'每次释放技能后全队+1支援点'},
+    '地狱火', [
+      {key:'s1', name:'冥火弹', cost:2, target:'enemy', desc:'1.7倍魔攻伤害，目标法抗-18%（2回合）。',
+       fx:[{k:'dmg',mult:1.7,scope:'enemy'},{k:'debuffMdef',pct:0.18,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'火焰风暴', cost:3, target:'allEnemy', desc:'全体0.9倍魔攻伤害，30%概率灼烧（持续掉血）。',
+       fx:[{k:'dmg',mult:0.9,scope:'allEnemy'}]}
+    ],
+    {name:'炼狱审判', target:'allEnemy', desc:'全体1.7倍魔法伤害，自身魔攻+18%（2回合）。',
+     fx:[{k:'dmg',mult:1.7,scope:'allEnemy'},{k:'buffMatk',pct:0.18,turns:2,scope:'self'}]}),
+
+  H('beast_flameghost','火焰幽灵','炽焰幽魂','assassin','fire',{hp:700,atk:168,def:35,matk:55,mdef:38},
+    {type:'slay', name:'魂火收割', desc:'对生命低于35%的目标伤害+35%', threshold:0.35, bonus:0.35},
+    '魂火刺', [
+      {key:'s1', name:'幽灵突袭', cost:2, target:'enemy', desc:'2.0倍攻击伤害，自身充能+1。',
+       fx:[{k:'dmg',mult:2.0,scope:'enemy'},{k:'energy',amt:1,scope:'self'}]},
+      {key:'s2', name:'焚魂', cost:3, target:'enemy', desc:'2.4倍攻击伤害，目标治疗效果-30%（2回合）。',
+       fx:[{k:'dmg',mult:2.4,scope:'enemy'}]}
+    ],
+    {name:'万魂焚天', target:'allEnemy', desc:'全体1.35倍攻击伤害，对低血量目标额外+50%。',
+     fx:[{k:'dmg',mult:1.35,scope:'allEnemy'}]}),
+
+  H('beast_moss','苔藓巨兽','远古苔兽','tank','grass',{hp:1380,atk:95,def:96,matk:75,mdef:92},
+    {type:'regen', name:'苔藓再生', desc:'己方行动阶段开始时恢复6%最大生命', ratio:0.06},
+    '苔击', [
+      {key:'s1', name:'藤蔓抽打', cost:2, target:'enemy', desc:'1.1倍伤害，目标攻击-18%（2回合）。',
+       fx:[{k:'dmg',mult:1.1,scope:'enemy'},{k:'debuffAtk',pct:0.18,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'自然治愈', cost:3, target:'allAlly', desc:'全体友军恢复0.9倍攻击生命。',
+       fx:[{k:'heal',mult:0.9,scope:'allAlly'}]}
+    ],
+    {name:'苔原守护', target:'allAlly', desc:'全体友军获得160护盾，恢复0.6倍攻击生命。',
+     fx:[{k:'shield',v:160,scope:'allAlly'},{k:'heal',mult:0.6,scope:'allAlly'}]}),
+
+  H('beast_flora','花灵祭司','花语者','support','grass',{hp:820,atk:55,def:44,matk:142,mdef:75},
+    {type:'healLowStart', name:'花之祝福', desc:'己方阶段开始时治疗最低血量友军0.9倍魔攻', mult:0.9},
+    '花粉', [
+      {key:'s1', name:'治愈花粉', cost:2, target:'ally', desc:'治疗友军2.2倍魔攻生命，目标防御+15%（2回合）。',
+       fx:[{k:'heal',mult:2.2,scope:'ally'},{k:'buffDef',pct:0.15,turns:2,scope:'ally'}]},
+      {key:'s2', name:'藤蔓束缚', cost:3, target:'enemy', desc:'0.85倍魔攻伤害，目标攻击-22%（2回合）。',
+       fx:[{k:'dmg',mult:0.85,scope:'enemy'},{k:'debuffAtk',pct:0.22,turns:2,scope:'enemy'}]}
+    ],
+    {name:'生命绽放', target:'allAlly', desc:'全体友军恢复1.4倍魔攻生命，充能+1。',
+     fx:[{k:'heal',mult:1.4,scope:'allAlly'},{k:'energy',amt:1,scope:'allAlly'}]}),
+
+  H('beast_thorn','荆棘战士','刺甲勇士','warrior','grass',{hp:950,atk:132,def:72,matk:60,mdef:65},
+    {type:'thorn', name:'反刺护甲', desc:'受到伤害时反弹22%给攻击者', ratio:0.22},
+    '刺击', [
+      {key:'s1', name:'荆棘突刺', cost:2, target:'enemy', desc:'1.65倍攻击伤害，目标防御-18%（2回合）。',
+       fx:[{k:'dmg',mult:1.65,scope:'enemy'},{k:'debuffDef',pct:0.18,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'刺甲爆发', cost:3, target:'enemy', desc:'1.9倍攻击伤害，自身获得140护盾。',
+       fx:[{k:'dmg',mult:1.9,scope:'enemy'},{k:'shield',v:140,scope:'self'}]}
+    ],
+    {name:'万刺穿心', target:'allEnemy', desc:'全体1.3倍攻击伤害，目标防御-12%（2回合）。',
+     fx:[{k:'dmg',mult:1.3,scope:'allEnemy'},{k:'debuffDef',pct:0.12,turns:2,scope:'allEnemy'}]}),
+
+  H('beast_abyss','深海巫师','深渊咒术师','mage','water',{hp:790,atk:56,def:42,matk:160,mdef:62},
+    {type:'skillChargeExtra', name:'深渊汲取', desc:'释放技能时额外+1充能'},
+    '深渊弹', [
+      {key:'s1', name:'寒冰箭', cost:2, target:'enemy', desc:'1.75倍魔攻伤害，目标法抗-15%（2回合）。',
+       fx:[{k:'dmg',mult:1.75,scope:'enemy'},{k:'debuffMdef',pct:0.15,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'海啸', cost:3, target:'allEnemy', desc:'全体0.95倍魔攻伤害，目标攻击-12%（2回合）。',
+       fx:[{k:'dmg',mult:0.95,scope:'allEnemy'},{k:'debuffAtk',pct:0.12,turns:2,scope:'allEnemy'}]}
+    ],
+    {name:'深渊漩涡', target:'allEnemy', desc:'全体1.6倍魔法伤害，自身魔攻+15%（2回合）。',
+     fx:[{k:'dmg',mult:1.6,scope:'allEnemy'},{k:'buffMatk',pct:0.15,turns:2,scope:'self'}]}),
+
+  H('beast_tide','潮汐猎手','深海刺客','assassin','water',{hp:730,atk:162,def:38,matk:52,mdef:40},
+    {type:'siphon', name:'潮汐汲取', desc:'造成伤害的20%转化为治疗', ratio:0.20},
+    '水刃', [
+      {key:'s1', name:'激流斩', cost:2, target:'enemy', desc:'1.9倍攻击伤害，自身恢复0.5倍攻击生命。',
+       fx:[{k:'dmg',mult:1.9,scope:'enemy'},{k:'heal',mult:0.5,scope:'self'}]},
+      {key:'s2', name:'深海刺杀', cost:3, target:'enemy', desc:'2.35倍攻击伤害，无视25%防御。',
+       fx:[{k:'dmg',mult:2.35,scope:'enemy'}]}
+    ],
+    {name:'潮汐风暴', target:'allEnemy', desc:'全体1.3倍攻击伤害，自身获得100护盾。',
+     fx:[{k:'dmg',mult:1.3,scope:'allEnemy'},{k:'shield',v:100,scope:'self'}]}),
+
+  H('beast_coral','珊瑚守卫','深海壁垒','tank','water',{hp:1320,atk:92,def:94,matk:68,mdef:95},
+    {type:'stoneSkin', name:'珊瑚护甲', desc:'己方每阶段首次受到伤害-32%', ratio:0.32},
+    '珊瑚击', [
+      {key:'s1', name:'海浪冲击', cost:2, target:'allEnemy', desc:'全体0.85倍伤害，目标攻击-15%（2回合）。',
+       fx:[{k:'dmg',mult:0.85,scope:'allEnemy'},{k:'debuffAtk',pct:0.15,turns:2,scope:'allEnemy'}]},
+      {key:'s2', name:'珊瑚壁垒', cost:3, target:'allAlly', desc:'全体友军获得170护盾。',
+       fx:[{k:'shield',v:170,scope:'allAlly'}]}
+    ],
+    {name:'深海守护', target:'allAlly', desc:'全体友军获得200护盾，法抗+15%（2回合）。',
+     fx:[{k:'shield',v:200,scope:'allAlly'},{k:'buffMdef',pct:0.15,turns:2,scope:'allAlly'}]}),
+
+  H('beast_thunder','雷电先知','风暴预言者','support','elec',{hp:810,atk:58,def:42,matk:138,mdef:65},
+    {type:'spStart', name:'雷电感应', desc:'己方阶段开始时额外+1支援点'},
+    '电弧', [
+      {key:'s1', name:'雷电祝福', cost:2, target:'ally', desc:'友军魔攻+22%（2回合），充能+1。',
+       fx:[{k:'buffMatk',pct:0.22,turns:2,scope:'ally'},{k:'energy',amt:1,scope:'ally'}]},
+      {key:'s2', name:'连锁闪电', cost:3, target:'allEnemy', desc:'全体0.85倍魔攻伤害，目标法抗-12%（2回合）。',
+       fx:[{k:'dmg',mult:0.85,scope:'allEnemy'},{k:'debuffMdef',pct:0.12,turns:2,scope:'allEnemy'}]}
+    ],
+    {name:'天雷启示', target:'allAlly', desc:'全体友军充能+2，获得100护盾。',
+     fx:[{k:'energy',amt:2,scope:'allAlly'},{k:'shield',v:100,scope:'allAlly'}]}),
+
+  H('beast_bolt','闪电勇士','雷霆战士','warrior','elec',{hp:930,atk:142,def:58,matk:55,mdef:50},
+    {type:'attackChargeExtra', name:'雷电迅捷', desc:'普攻额外+1充能', extra:1},
+    '雷斩', [
+      {key:'s1', name:'闪电突刺', cost:2, target:'enemy', desc:'1.8倍雷电伤害，30%概率连击。',
+       fx:[{k:'dmg',mult:1.8,scope:'enemy'}]},
+      {key:'s2', name:'雷鸣斩', cost:3, target:'enemy', desc:'2.15倍伤害，目标防御-18%（2回合）。',
+       fx:[{k:'dmg',mult:2.15,scope:'enemy'},{k:'debuffDef',pct:0.18,turns:2,scope:'enemy'}]}
+    ],
+    {name:'九天雷霆', target:'allEnemy', desc:'全体1.45倍雷电伤害，自身充能+2。',
+     fx:[{k:'dmg',mult:1.45,scope:'allEnemy'},{k:'energy',amt:2,scope:'self'}]}),
+
+  H('beast_storm','风暴术士','狂风法师','mage','wind',{hp:770,atk:54,def:40,matk:158,mdef:58},
+    {type:'idleChargeExtra', name:'风之凝聚', desc:'待机时额外+2充能', extra:2},
+    '风刃', [
+      {key:'s1', name:'暴风斩', cost:2, target:'allEnemy', desc:'全体0.85倍魔攻伤害，目标防御-12%（2回合）。',
+       fx:[{k:'dmg',mult:0.85,scope:'allEnemy'},{k:'debuffDef',pct:0.12,turns:2,scope:'allEnemy'}]},
+      {key:'s2', name:'风刃穿刺', cost:3, target:'enemy', desc:'2.3倍魔攻伤害。',
+       fx:[{k:'dmg',mult:2.3,scope:'enemy'}]}
+    ],
+    {name:'风暴之怒', target:'allEnemy', desc:'全体1.55倍伤害，目标速度-15%（2回合）。',
+     fx:[{k:'dmg',mult:1.55,scope:'allEnemy'}]}),
+
+  H('beast_hurricane','飓风巨像','风暴守护者','tank','wind',{hp:1280,atk:100,def:90,matk:70,mdef:85},
+    {type:'counterStun', name:'旋风反击', desc:'受到伤害时25%概率使攻击者眩晕1回合', ratio:0.25},
+    '风击', [
+      {key:'s1', name:'飓风冲击', cost:2, target:'enemy', desc:'1.25倍伤害，目标攻击-18%（2回合）。',
+       fx:[{k:'dmg',mult:1.25,scope:'enemy'},{k:'debuffAtk',pct:0.18,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'风之壁垒', cost:3, target:'self', desc:'自身获得2.2倍攻击护盾，全体友军速度+10%（2回合）。',
+       fx:[{k:'shield',mult:2.2,scope:'self'}]}
+    ],
+    {name:'飓风领域', target:'allEnemy', desc:'全体1.25倍伤害，目标攻击-15%（2回合），自身获得150护盾。',
+     fx:[{k:'dmg',mult:1.25,scope:'allEnemy'},{k:'debuffAtk',pct:0.15,turns:2,scope:'allEnemy'},{k:'shield',v:150,scope:'self'}]}),
+
+  H('beast_rock','岩石潜行者','地穴刺客','assassin','earth',{hp:750,atk:160,def:42,matk:50,mdef:45},
+    {type:'slay', name:'碎石突袭', desc:'对生命低于50%的目标伤害+28%', threshold:0.50, bonus:0.28},
+    '岩刺', [
+      {key:'s1', name:'地刺突袭', cost:2, target:'enemy', desc:'1.85倍攻击伤害，目标防御-15%（2回合）。',
+       fx:[{k:'dmg',mult:1.85,scope:'enemy'},{k:'debuffDef',pct:0.15,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'碎岩斩', cost:3, target:'enemy', desc:'2.3倍攻击伤害，无视20%防御。',
+       fx:[{k:'dmg',mult:2.3,scope:'enemy'}]}
+    ],
+    {name:'地裂杀阵', target:'allEnemy', desc:'全体1.35倍攻击伤害，目标防御-10%（2回合）。',
+     fx:[{k:'dmg',mult:1.35,scope:'allEnemy'},{k:'debuffDef',pct:0.10,turns:2,scope:'allEnemy'}]}),
+
+  H('beast_earthpriest','大地祭司','岩石守护者','support','earth',{hp:840,atk:60,def:48,matk:135,mdef:68},
+    {type:'shieldLowStart', name:'大地护佑', desc:'己方阶段开始时为最低血量友军添加0.7倍魔攻护盾', mult:0.7},
+    '岩弹', [
+      {key:'s1', name:'岩石护盾', cost:2, target:'ally', desc:'友军获得200护盾，防御+15%（2回合）。',
+       fx:[{k:'shield',v:200,scope:'ally'},{k:'buffDef',pct:0.15,turns:2,scope:'ally'}]},
+      {key:'s2', name:'地刺', cost:3, target:'enemy', desc:'1.4倍魔攻伤害，目标法抗-15%（2回合）。',
+       fx:[{k:'dmg',mult:1.4,scope:'enemy'},{k:'debuffMdef',pct:0.15,turns:2,scope:'enemy'}]}
+    ],
+    {name:'大地恩赐', target:'allAlly', desc:'全体友军获得150护盾，恢复0.8倍魔攻生命。',
+     fx:[{k:'shield',v:150,scope:'allAlly'},{k:'heal',mult:0.8,scope:'allAlly'}]}),
+
+  H('beast_mountain','山脉贤者','岩石法师','mage','earth',{hp:800,atk:56,def:44,matk:155,mdef:60},
+    {type:'warCryMatk', name:'山脉共鸣', desc:'每次释放技能后魔攻+7%（最多3层）'},
+    '岩石术', [
+      {key:'s1', name:'落石', cost:2, target:'enemy', desc:'1.65倍魔攻伤害，目标法抗-18%（2回合）。',
+       fx:[{k:'dmg',mult:1.65,scope:'enemy'},{k:'debuffMdef',pct:0.18,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'地震', cost:3, target:'allEnemy', desc:'全体0.92倍魔攻伤害，目标防御-12%（2回合）。',
+       fx:[{k:'dmg',mult:0.92,scope:'allEnemy'},{k:'debuffDef',pct:0.12,turns:2,scope:'allEnemy'}]}
+    ],
+    {name:'山崩地裂', target:'allEnemy', desc:'全体1.65倍魔法伤害，自身魔攻+15%（2回合）。',
+     fx:[{k:'dmg',mult:1.65,scope:'allEnemy'},{k:'buffMatk',pct:0.15,turns:2,scope:'self'}]}),
+
 ];
 
 const ALL_BEASTS_EXT = BEASTS.concat(NEW_BEASTS);
@@ -2529,6 +2773,20 @@ const Engine = {
         }
       } else if(u.passive.type==='skillChargeExtra'){
         this.gainEnergy(game,u,1);
+      } else if(u.passive.type==='comboGrowth'){
+        // 连击增长：技能命中后叠加伤害增益
+        const st=u.passiveState; st.comboStacks=Math.min(3,(st.comboStacks||0)+1);
+        u.buffs.push({kind:'atk',pct:u.passive.ratio||0.10,left:4,src:'连击精通',perm:false});
+        this.log(game,'buff',u.side+'-buff',`${u.name}【连击精通】攻击+${Math.round((u.passive.ratio||0.10)*100)}%（第${st.comboStacks}层）`);
+      } else if(u.passive.type==='overcharge'){
+        // 过载：释放技能后额外+1充能
+        this.gainEnergy(game,u,1);
+      } else if(u.passive.type==='tailwind'){
+        // 顺风：20%概率返还1点支援点
+        if(Math.random() < (u.passive.ratio||0.20)){
+          this.addSP(game,u.side,1,u.passive.name);
+          this.log(game,'info',u.side+'-sp',`${u.name}【顺风】触发！返还1点支援点`);
+        }
       }
     }
   },
@@ -2570,6 +2828,14 @@ const Engine = {
     if(target && att.passive && att.passive.type==='slay' && target.hp/target.maxHp < att.passive.threshold){
       raw*=1+(att.passive.bonus||0);
     }
+    // 混伤精通：魔法伤害+20%，物理伤害+10%
+    if(att.passive && att.passive.type==='hybridBoost'){
+      raw *= magic ? 1.20 : 1.10;
+    }
+    // 盾击：拥有护盾时技能伤害+20%
+    if(att.passive && att.passive.type==='shieldSmash' && att.shield > 0){
+      raw *= 1.20;
+    }
     raw*=extraMult||1;
     if(game && game.weather) raw*=this.weatherDmgMult(game, att.attr);
     // 疲劳机制伤害加成
@@ -2599,8 +2865,16 @@ const Engine = {
     }
     if(tgt.shield>0){
       const absorb=Math.min(tgt.shield,dmg);
+      const shieldBefore=tgt.shield;
       tgt.shield-=absorb; dmg-=absorb;
       if(absorb>0) this.log(game,'info',tgt.side+'-shield',`${tgt.name} 护盾吸收 ${absorb}`);
+      // 盾击：护盾被打破时对攻击者造成0.5倍攻击反伤
+      if(tgt.shield===0 && shieldBefore>0 && tgt.passive && tgt.passive.type==='shieldSmash' && src && src.alive && src.side!==tgt.side){
+        const smashDmg=Math.max(1,Math.round(this.effectiveAtk(tgt)*0.5));
+        this.log(game,'info',tgt.side+'-shieldbreak',`${tgt.name}【盾击】护盾破裂，对 ${src.name} 造成 ${smashDmg} 反伤`);
+        this.applyDamage(game, tgt, src, smashDmg, {pure:true, direct:false, noReflect:true});
+        this.checkEnd(game);
+      }
     }
     tgt.hp-=dmg;
     if(tgt.hp<=0){ tgt.hp=0; tgt.alive=false; tgt.buffs=[]; }
@@ -2625,6 +2899,14 @@ const Engine = {
         src.buffs.push({kind:'stun',left:1,src:'静电反击',perm:false});
         this.log(game,'info',tgt.side+'-stun',`${tgt.name}【静电反击】使 ${src.name} 下回合无法行动！`);
         game.events.push({type:'buff', side:src.side, unitId:src.id, name:'眩晕'});
+      }
+    }
+    // 冰霜护甲：受到伤害时25%概率使攻击者攻击-15%
+    if(meta.direct!==false && src && src.alive && src.side!==tgt.side && tgt.passive && tgt.passive.type==='frostArmor'){
+      if(Math.random() < (tgt.passive.ratio||0.25)){
+        src.buffs.push({kind:'atk',pct:-0.15,left:4,src:'冰霜护甲',perm:false});
+        this.log(game,'info',tgt.side+'-debuff',`${tgt.name}【冰霜护甲】使 ${src.name} 攻击-15%（2回合）`);
+        game.events.push({type:'buff', side:src.side, unitId:src.id, name:'攻击-15%'});
       }
     }
     // 装备吸血：攻击方回复生命
