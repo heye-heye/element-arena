@@ -1236,7 +1236,7 @@ button{font-family:inherit}
       <b>强化：</b>最高50级，成长率递减（Lv.1为8%，Lv.50为1%），强化到50级总倍数约6.94x。百分比词条成长率减半。<br>
       <b>强化费用：</b>10×1.05^(等级-1)，50级总费用约1984金币。<br>
       <b>售卖：</b>1级装备30金币，其他等级约强化总费用的110%，保证强化后售卖不亏。<br>
-      <b>金币获取：</b>每层战斗获得30+层数×18+随机(0-29)金币。45层总金币（含售卖）约24700，可强化12个装备至50级。
+      <b>金币获取：</b>每层战斗获得20+层数×18+随机(0-29)金币。45层总金币（含售卖）约24700，可强化12个装备至50级。
     </p>
     <h4 style="margin:10px 0 4px">徽章系统</h4>
     <p>
@@ -1810,9 +1810,25 @@ function getAffixRange(key, level){
   if(key==='defFlat'||key==='mdefFlat') return {min:level*0.7, max:level*1.7};
   return {min:level*1.4, max:level*3.2};
 }
-// 根据词条数值在浮动范围内的位置判断颜色（5档）
-function getAffixColor(key, level, value){
-  const range = getAffixRange(key, level);
+// 根据层数获取合并的掉落等级范围
+function getMergedLevelRange(floor){
+  const f = floor || 1;
+  if(f <= 3) return {min:1, max:2};
+  if(f <= 8) return {min:3, max:4};
+  if(f <= 15) return {min:5, max:6};
+  if(f <= 24) return {min:7, max:8};
+  return {min:9, max:10};
+}
+// 获取合并等级范围内的词条浮动范围（min等级的最小值 ~ max等级的最大值）
+function getMergedAffixRange(key, floor){
+  const lvRange = getMergedLevelRange(floor);
+  const minRange = getAffixRange(key, lvRange.min);
+  const maxRange = getAffixRange(key, lvRange.max);
+  return {min: minRange.min, max: maxRange.max};
+}
+// 根据词条数值在合并浮动范围内的位置判断颜色（5档）
+function getAffixColor(key, level, value, floor){
+  const range = getMergedAffixRange(key, floor);
   if(range.max <= range.min) return '#e5e7eb';
   const pos = (value - range.min) / (range.max - range.min);
   if(pos < 0.2) return '#e5e7eb'; // 白
@@ -1845,7 +1861,7 @@ function rollGearDrop(level, floor){
   const keys=available.map(a=>a.key).sort(()=>Math.random()-0.5).slice(0,3);
   const affixes=keys.map(key=>{
     const v=rollAffixValue(key, level);
-    const affixColor = getAffixColor(key, level, v);
+    const affixColor = getAffixColor(key, level, v, floor);
     return {key, value:v, pct:gearAffixInfo(key).pct, color:affixColor};
   });
   const icon=GEAR_AFFIXES[Math.floor(Math.random()*GEAR_AFFIXES.length)].icon;
@@ -4207,6 +4223,7 @@ $('battle-abort').addEventListener('click',()=>{
 
 loadSave();
 showScreen("title");
+if(typeof updateResumeBtn === 'function') updateResumeBtn();
 document.body.dataset.boot='ok';
 /*===UI_PART2===*/
 /* ============================================================
