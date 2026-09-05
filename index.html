@@ -3176,11 +3176,25 @@ function loadSave(){
     }
     if(Array.isArray(data.rlBadges)) UI.rl.badges=data.rlBadges;
     if(typeof data.rlTotalGold==='number') UI.rl.totalGold=data.rlTotalGold;
+    if(data.rlSave && data.rlSave.active){
+      UI.rl.active = true;
+      UI.rl.floor = data.rlSave.floor || 1;
+      UI.rl.gold = data.rlSave.gold || 0;
+      UI.rl.team = data.rlSave.team || [];
+      UI.rl.gear = data.rlSave.gear || [];
+    }
   }catch(e){ /* 存档损坏时忽略，继续用新档 */ }
 }
 function saveGame(){
   try{
-    localStorage.setItem(SAVE_KEY, JSON.stringify({progress:UI.progress, gear:UI.gear, rlBadges:UI.rl.badges, rlTotalGold:UI.rl.totalGold}));
+    const rlSave = UI.rl.active ? {
+      active: true,
+      floor: UI.rl.floor,
+      gold: UI.rl.gold,
+      team: UI.rl.team,
+      gear: UI.rl.gear
+    } : {active: false};
+    localStorage.setItem(SAVE_KEY, JSON.stringify({progress:UI.progress, gear:UI.gear, rlBadges:UI.rl.badges, rlTotalGold:UI.rl.totalGold, rlSave: rlSave}));
   }catch(e){ /* 隐私/无痕模式下无法写入 */ }
 }
 
@@ -4271,6 +4285,28 @@ function startRoguelike(){
   UI.rl.gear = [];
   renderRlSelect();
   showScreen('rl-select');
+  updateResumeBtn();
+}
+function resumeRlGame(){
+  if(!UI.rl.active || UI.rl.team.length === 0){
+    toast('没有可继续的肉鸽进度');
+    return;
+  }
+  // 恢复到装备调整界面
+  openRlGear();
+  toast('已恢复第' + UI.rl.floor + '层进度');
+}
+function updateResumeBtn(){
+  const btn = $('btn-resume-rl');
+  if(btn){
+    if(UI.rl.active && UI.rl.team.length > 0){
+      btn.style.display = '';
+      const floorEl = $('resume-floor');
+      if(floorEl) floorEl.textContent = UI.rl.floor;
+    } else {
+      btn.style.display = 'none';
+    }
+  }
 }
 
 function renderRlSelect(){
@@ -4431,7 +4467,7 @@ function startRlBattle(){
 function onRlBattleEnd(victory){
   if(victory){
     // 计算金币奖励
-    const goldEarned = 30 + UI.rl.floor * 18 + Math.floor(Math.random()*30);
+    const goldEarned = 20 + UI.rl.floor * 18 + Math.floor(Math.random()*30);
     UI.rl.gold += goldEarned;
     UI.rl.totalGold += goldEarned;
     $('rl-gold-earned').textContent = goldEarned;
@@ -4547,9 +4583,9 @@ function nextRlFloor(){
 }
 
 function exitRl(){
-  UI.rl.active = false;
   saveGame();
   showScreen('title');
+  updateResumeBtn();
 }
 
 function grantRlBadge(){
@@ -4636,7 +4672,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const badgeBtn = $('btn-badge');
   if(badgeBtn) badgeBtn.addEventListener('click', ()=>{ renderBadgeCodex(); showScreen('badge'); });
   const rlStart = $('rl-start-btn');
-  if(rlStart) rlStart.addEventListener('click', startRlBattle);
+  if(rlStart) rlStart.addEventListener('click', ()=>{ startRlBattle(); updateResumeBtn(); });
   const rlNext = $('rl-next-btn');
   if(rlNext) rlNext.addEventListener('click', nextRlFloor);
   const rlExit = $('rl-exit-btn');
@@ -4881,7 +4917,7 @@ function sellRlGear(idx){
     <div style="color:var(--muted);margin-bottom:16px">获得金币：<span id="rl-gold-earned" style="color:#fbbf24;font-weight:700">0</span> 💰</div>
     <div style="font-size:16px;font-weight:700;margin-bottom:12px;margin-top:8px">📊 战斗结算</div>
     <div id="rl-battle-stats" style="background:rgba(0,0,0,.3);border-radius:10px;padding:12px;margin-bottom:16px;font-size:13px"></div>
-    <div style="font-size:16px;font-weight:700;margin-bottom:12px">装备掉落（2件）</div>
+    <div style="font-size:16px;font-weight:700;margin-bottom:12px">装备掉落（3件）</div>
     <div class="rl-drop-grid" id="rl-drop-grid"></div>
     <div style="display:flex;gap:12px;justify-content:center;margin-top:20px">
       <button class="big-btn primary" id="rl-next-btn">继续下一层 →</button>
