@@ -2841,12 +2841,12 @@ const Engine = {
     this.log(game,'energy',unit.side+'-e',`${unit.name} 充能 +${amount}（${unit.energy}/${unit.ultNeed||ULT_THRESHOLD}）`);
   },
 
-  // 疲劳机制：第10回合后伤害递增、治疗衰减，防止坦克互殴
+  // 疲劳机制：第10回合后伤害递增（上限300%）、治疗衰减（趋近50%），防止坦克互殴
   getFatigueMults(game){
     if(!game || !game.phaseCount || game.phaseCount < 10) return {dmg:1, heal:1};
     const t = game.phaseCount - 9; // 第10回合t=1
-    // 伤害：第10回合105%，之后每回合+2%
-    const dmg = 1 + 0.05 + (t - 1) * 0.02;
+    // 伤害：第10回合110%，之后每回合+5%，上限300%
+    const dmg = Math.min(3.0, 1.10 + (t - 1) * 0.05);
     // 治疗：指数衰减趋近50%，第10回合95%
     const k = 0.10536; // -ln(0.9)，使第10回合恰好95%
     const heal = 0.5 + 0.5 * Math.exp(-k * t);
