@@ -1938,57 +1938,57 @@ const HEROES = [
   H('wila','薇拉','荆棘女王','tank','grass',{hp:1120,atk:98,def:84,matk:72,mdef:82},
     {type:'thorn', name:'荆棘反噬', desc:'受到直接伤害时，反弹 25% 给攻击者', ratio:0.25},
     '藤鞭', [
-      {key:'s1', name:'缠绕藤鞭', cost:2, target:'enemy', desc:'造成 1.1 倍伤害并使目标攻击 -20%，持续 2 回合。',
-       fx:[{k:'dmg', mult:1.1, scope:'enemy'},{k:'debuffAtk', pct:0.2, turns:2, scope:'enemy'}]},
+      {key:'s1', name:'缠绕藤鞭', cost:2, target:'enemy', desc:'造成 1.2 倍伤害并使目标攻击 -20%，持续 2 回合。',
+       fx:[{k:'dmg', mult:1.2, scope:'enemy'},{k:'debuffAtk', pct:0.2, turns:2, scope:'enemy'}]},
       {key:'s2', name:'治愈林地', cost:3, target:'self', desc:'恢复自身 2.0 倍攻击的生命。',
        fx:[{k:'heal', mult:2.0, scope:'self'}]}
     ],
-    {name:'森之壁垒', target:'allAlly', desc:'全体友军获得 240 护盾，自身额外恢复 1.2 倍攻击生命。',
-     fx:[{k:'shield', v:240, scope:'allAlly'},{k:'heal', mult:1.2, scope:'self'}]}),
+    {name:'森之壁垒', target:'allAlly', desc:'全体友军获得 2.1 倍攻击护盾，自身额外恢复 1.0 倍攻击生命。',
+     fx:[{k:'shield', mult:2.1, scope:'allAlly'},{k:'heal', mult:1.0, scope:'self'}]}),
 
   H('feiona','菲奥娜','林语贤者','support','grass',{hp:780,atk:52,def:42,matk:135,mdef:72},
-    {type:'healLowStart', name:'自然恩泽', desc:'己方行动阶段开始时，治疗生命比例最低的友军0.8倍魔攻的生命', mult:0.8},
+    {type:'healLowStart', name:'自然恩泽', desc:'己方行动阶段开始时，治疗生命比例最低的友军 0.6 倍魔攻的生命', mult:0.6},
     '种籽弹', [
-      {key:'s1', name:'藤蔓束缚', cost:2, target:'enemy', desc:'造成 0.9 倍魔攻伤害并使目标攻击 -25%，持续 2 回合。',
-       fx:[{k:'dmg', mult:0.9, scope:'enemy'},{k:'debuffAtk', pct:0.25, turns:2, scope:'enemy'}]},
-      {key:'s2', name:'复苏之光', cost:3, target:'ally', desc:'治疗友军 2.3 倍魔攻生命，目标充能 +1。',
-       fx:[{k:'heal', mult:2.3, scope:'ally'},{k:'energy', amt:1, scope:'ally'}]}
+      {key:'s1', name:'藤蔓束缚', cost:2, target:'enemy', desc:'造成 1.0 倍魔攻伤害并使目标攻击 -20%，持续 2 回合。',
+       fx:[{k:'dmg', mult:1.0, scope:'enemy'},{k:'debuffAtk', pct:0.2, turns:2, scope:'enemy'}]},
+      {key:'s2', name:'复苏之光', cost:3, target:'ally', desc:'治疗友军 2.0 倍魔攻生命，目标充能 +1。',
+       fx:[{k:'heal', mult:2.0, scope:'ally'},{k:'energy', amt:1, scope:'ally'}]}
     ],
-    {name:'生命之环', target:'allAlly', desc:'全体友军恢复 1.25 倍魔攻生命，除自己外的友军充能 +2。',
-     fx:[{k:'heal', mult:1.25, scope:'allAlly'},{k:'energy', amt:2, scope:'allAllyOther'}]}),
+    {name:'生命之环', target:'allAlly', desc:'全体友军恢复 1.5 倍魔攻生命，除自己外的友军充能 +1。',
+     fx:[{k:'heal', mult:1.5, scope:'allAlly'},{k:'energy', amt:1, scope:'allAllyOther'}]}),
 
   H('sailin','赛琳','潮汐祭司','support','water',{hp:850,atk:60,def:48,matk:112,mdef:62},
-    {type:'spStart', name:'潮汐共鸣', desc:'己方行动阶段开始时额外 +1 支援点'},
+    {type:'spStart', name:'潮汐共鸣', desc:'己方行动阶段开始时额外 +1 支援点，50% 概率额外获得一点', bonusChance:0.5},
     '水弹', [
-      {key:'s1', name:'激流冲击', cost:2, target:'enemy', desc:'造成 1.35 倍魔攻伤害。',
-       fx:[{k:'dmg', mult:1.35, scope:'enemy'}]},
-      {key:'s2', name:'愈合之潮', cost:3, target:'ally', desc:'治疗友军 2.4 倍魔攻生命。',
-       fx:[{k:'heal', mult:2.4, scope:'ally'}]}
+      {key:'s1', name:'激流冲击', cost:2, target:'enemy', desc:'造成 1.5 倍魔攻伤害，并降低目标一点充能。',
+       fx:[{k:'dmg', mult:1.5, scope:'enemy'},{k:'energy', amt:-1, scope:'enemy'}]},
+      {key:'s2', name:'愈合之潮', cost:3, target:'ally', desc:'治疗友军 2.2 倍魔攻生命。',
+       fx:[{k:'heal', mult:2.2, scope:'ally'}]}
     ],
-    {name:'深海祈愿', target:'allAlly', desc:'全体友军恢复 1.5 倍魔攻生命并获得 110 护盾。',
-     fx:[{k:'heal', mult:1.5, scope:'allAlly'},{k:'shield', v:110, scope:'allAlly'}]}),
+    {name:'深海祈愿', target:'allAlly', desc:'全体友军恢复 1.5 倍魔攻生命并获得 100 护盾。',
+     fx:[{k:'heal', mult:1.5, scope:'allAlly'},{k:'shield', v:100, scope:'allAlly'}]}),
 
   H('luoka','洛卡','苍鳞武者','warrior','water',{hp:960,atk:122,def:64,matk:48,mdef:55},
     {type:'siphon', name:'潮汐愈合', desc:'自身造成的直接伤害 18% 转化为治疗', ratio:0.18},
     '浪斩', [
       {key:'s1', name:'潮汐斩', cost:2, target:'enemy', desc:'造成 1.7 倍攻击伤害。',
        fx:[{k:'dmg', mult:1.7, scope:'enemy'}]},
-      {key:'s2', name:'寒潮冰雾', cost:3, target:'enemy', desc:'造成 1.05 倍伤害，目标攻击 -25%，自身获得 100 护盾。',
-       fx:[{k:'dmg', mult:1.05, scope:'enemy'},{k:'debuffAtk', pct:0.25, turns:2, scope:'enemy'},{k:'shield', v:100, scope:'self'}]}
+      {key:'s2', name:'寒潮冰雾', cost:3, target:'enemy', desc:'造成 1.1 倍伤害，目标攻击 -20%，自身获得 1.0 倍攻击护盾。',
+       fx:[{k:'dmg', mult:1.1, scope:'enemy'},{k:'debuffAtk', pct:0.25, turns:2, scope:'enemy'},{k:'shield', mult:1.0, scope:'self'}]}
     ],
-    {name:'深海龙卷', target:'allEnemy', desc:'对敌方全体造成 1.45 倍攻击伤害，并治疗自身 25% 已损失生命。',
-     fx:[{k:'dmg', mult:1.45, scope:'allEnemy'},{k:'healMissing', ratio:0.25, scope:'self'}]}),
+    {name:'深海龙卷', target:'allEnemy', desc:'对敌方全体造成 1.55 倍攻击伤害，并治疗自身 20% 已损失生命。',
+     fx:[{k:'dmg', mult:1.55, scope:'allEnemy'},{k:'healMissing', ratio:0.20, scope:'self'}]}),
 
   H('jifeng','疾','雷影','assassin','elec',{hp:720,atk:165,def:38,matk:40,mdef:35},
     {type:'skillChargeExtra', name:'过载回路', desc:'释放技能时额外获得 +1 充能'},
     '雷刺', [
-      {key:'s1', name:'雷切', cost:2, target:'enemy', desc:'造成 1.9 倍攻击的雷电伤害。',
-       fx:[{k:'dmg', mult:1.9, scope:'enemy'}]},
-      {key:'s2', name:'千鸟鸣响', cost:3, target:'enemy', desc:'造成 2.25 倍攻击伤害并额外充能 +1。',
-       fx:[{k:'dmg', mult:2.25, scope:'enemy'},{k:'energy', amt:1, scope:'self'}]}
+      {key:'s1', name:'雷切', cost:2, target:'enemy', desc:'造成 1.6 倍攻击的雷电伤害。',
+       fx:[{k:'dmg', mult:1.6, scope:'enemy'}]},
+      {key:'s2', name:'千鸟鸣响', cost:3, target:'enemy', desc:'造成 2.1 倍攻击伤害并额外充能 +1。',
+       fx:[{k:'dmg', mult:2.1, scope:'enemy'},{k:'energy', amt:1, scope:'self'}]}
     ],
-    {name:'万雷天牢', target:'enemy', desc:'对单体降下万雷，造成 2.8 倍攻击伤害。',
-     fx:[{k:'dmg', mult:2.8, scope:'enemy'}]}),
+    {name:'万雷天牢', target:'enemy', desc:'对单体降下万雷，造成 2.9 倍攻击伤害，无视敌人 20% 防御。',
+     fx:[{k:'dmg', mult:2.9, ignoreDef:0.20, scope:'enemy'}]}),
 
   H('qiandai','千代','鸣雷武姬','warrior','elec',{hp:860,atk:138,def:52,matk:42,mdef:48},
     {type:'counterStun', name:'静电反击', desc:'受到直接伤害时 30% 概率使攻击者下回合无法行动', ratio:0.30},
@@ -1998,118 +1998,119 @@ const HEROES = [
       {key:'s2', name:'落雷', cost:3, target:'enemy', desc:'造成 1.9 倍伤害并使目标防御 -20%，持续 2 回合。',
        fx:[{k:'dmg', mult:1.9, scope:'enemy'},{k:'debuffDef', pct:0.2, turns:2, scope:'enemy'}]}
     ],
-    {name:'神威天雷', target:'enemy', desc:'单体 2.5 倍雷电伤害，自身获得 130 护盾。',
-     fx:[{k:'dmg', mult:2.5, scope:'enemy'},{k:'shield', v:130, scope:'self'}]}),
+    {name:'神威天雷', target:'enemy', desc:'单体 2.6 倍雷电伤害，自身获得 0.8 倍攻击护盾。',
+     fx:[{k:'dmg', mult:2.6, scope:'enemy'},{k:'shield', mult:0.8, scope:'self'}]}),
 
   H('fulei','芙蕾','迅羽猎手','assassin','wind',{hp:760,atk:150,def:42,matk:40,mdef:38},
     {type:'slay', name:'猎杀本能', desc:'对生命低于 50% 的目标伤害 +25%', threshold:0.5, bonus:0.25},
     '猎袭', [
-      {key:'s1', name:'穿云三连', cost:2, target:'enemy', desc:'连续射击 3 次，每次 0.62 倍攻击。',
-       fx:[{k:'dmg', mult:0.62, hits:3, scope:'enemy'}]},
-      {key:'s2', name:'风蚀箭', cost:3, target:'enemy', desc:'造成 2.0 倍伤害并使目标防御 -25%，持续 2 回合。',
-       fx:[{k:'dmg', mult:2.0, scope:'enemy'},{k:'debuffDef', pct:0.25, turns:2, scope:'enemy'}]}
+      {key:'s1', name:'穿云三连', cost:2, target:'enemy', desc:'连续射击 3 次，每次 0.6 倍攻击。',
+       fx:[{k:'dmg', mult:0.6, hits:3, scope:'enemy'}]},
+      {key:'s2', name:'风蚀箭', cost:3, target:'enemy', desc:'造成 1.9 倍伤害并使目标防御 -20%，持续 2 回合。',
+       fx:[{k:'dmg', mult:1.9, scope:'enemy'},{k:'debuffDef', pct:0.2, turns:2, scope:'enemy'}]}
     ],
-    {name:'风神箭雨', target:'allEnemy', desc:'对敌方全体造成 1.4 倍攻击伤害。',
-     fx:[{k:'dmg', mult:1.4, scope:'allEnemy'}]}),
+    {name:'风神箭雨', target:'allEnemy', desc:'对敌方全体造成 1.7 倍攻击伤害。',
+     fx:[{k:'dmg', mult:1.7, scope:'allEnemy'}]}),
 
   H('yien','伊恩','风吟贤者','support','wind',{hp:760,atk:68,def:40,matk:122,mdef:58},
-    {type:'energyRandomStart', name:'风之加护', desc:'己方行动阶段开始时，随机2名友军充能 +1'},
+    {type:'energyRandomStart', name:'风之加护', desc:'己方行动阶段开始时，随机 2 名友军充能 +1'},
     '风刃', [
       {key:'s1', name:'疾风祝福', cost:2, target:'ally', desc:'友军攻击 +25%（2 回合）且充能 +1。',
        fx:[{k:'buffAtk', pct:0.25, turns:2, scope:'ally'},{k:'energy', amt:1, scope:'ally'}]},
-      {key:'s2', name:'风盾守护', cost:3, target:'ally', desc:'友军获得 210 护盾并恢复 0.6 倍魔攻生命。',
-       fx:[{k:'shield', v:210, scope:'ally'},{k:'heal', mult:0.6, scope:'ally'}]}
+      {key:'s2', name:'风盾守护', cost:3, target:'ally', desc:'友军获得 1.0 倍魔攻护盾并恢复 1.2 倍魔攻生命。',
+       fx:[{k:'shield', mult:1.0, scope:'ally'},{k:'heal', mult:1.2, scope:'ally'}]}
     ],
-    {name:'风暴之眼', target:'allEnemy', desc:'对敌方全体造成 0.9 倍魔攻伤害，全体友军获得 90 护盾。',
-     fx:[{k:'dmg', mult:0.9, scope:'allEnemy'},{k:'shield', v:90, scope:'allAlly'}]}),
+    {name:'风暴之眼', target:'allEnemy', desc:'对敌方全体造成 1.0 倍魔攻伤害，全体友军获得 0.6 倍魔攻护盾。',
+     fx:[{k:'dmg', mult:1.0, scope:'allEnemy'},{k:'shield', mult:0.6, scope:'allAlly'}]}),
 
   H('aoge','奥格','磐岩卫士','tank','earth',{hp:1250,atk:90,def:98,matk:50,mdef:90},
     {type:'stoneSkin', name:'岩肤', desc:'己方每个行动阶段首次受到的伤害 -30%', ratio:0.3},
     '岩击', [
-      {key:'s1', name:'岩裂击', cost:2, target:'enemy', desc:'造成 1.2 倍伤害并使目标防御 -20%，持续 2 回合。',
-       fx:[{k:'dmg', mult:1.2, scope:'enemy'},{k:'debuffDef', pct:0.2, turns:2, scope:'enemy'}]},
-      {key:'s2', name:'磐石壁垒', cost:3, target:'self', desc:'自身获得 2.3 倍攻击的护盾。',
-       fx:[{k:'shield', mult:2.3, scope:'self'}]}
+      {key:'s1', name:'岩裂击', cost:2, target:'enemy', desc:'造成 1.3 倍攻击伤害并使目标防御 -20%，持续 2 回合。',
+       fx:[{k:'dmg', mult:1.3, scope:'enemy'},{k:'debuffDef', pct:0.2, turns:2, scope:'enemy'}]},
+      {key:'s2', name:'磐石壁垒', cost:3, target:'self', desc:'自身获得 2.0 倍攻击的护盾。',
+       fx:[{k:'shield', mult:2.0, scope:'self'}]}
     ],
-    {name:'大地崩裂', target:'allEnemy', desc:'全体 1.6 倍伤害并削减敌方防御 15%（2 回合），自身获得 150 护盾。',
-     fx:[{k:'dmg', mult:1.6, scope:'allEnemy'},{k:'debuffDef', pct:0.15, turns:2, scope:'allEnemy'},{k:'shield', v:150, scope:'self'}]}),
+    {name:'大地崩裂', target:'allEnemy', desc:'全体 1.5 倍伤害并削减敌方防御 10%（2 回合），自身获得 1.2 倍攻击护盾。',
+     fx:[{k:'dmg', mult:1.5, scope:'allEnemy'},{k:'debuffDef', pct:0.10, turns:2, scope:'allEnemy'},{k:'shield', mult:1.2, scope:'self'}]}),
 
   H('kaya','卡娅','地脉萨满','mage','earth',{hp:810,atk:58,def:46,matk:145,mdef:58},
-    {type:'skillSPChance', name:'地脉回响', desc:'己方英雄每次释放技能后，50%概率全队 +1 支援点'},
+    {type:'skillSPChance', name:'地脉回响', desc:'己方英雄每次释放技能后，50% 概率全队 +1 支援点'},
     '岩弹', [
-      {key:'s1', name:'地刺', cost:2, target:'enemy', desc:'造成 1.55 倍伤害并使目标法抗 -15%（2 回合）。',
-       fx:[{k:'dmg', mult:1.55, scope:'enemy'},{k:'debuffMdef', pct:0.15, turns:2, scope:'enemy'}]},
-      {key:'s2', name:'地鸣', cost:3, target:'allEnemy', desc:'对敌方全体造成 0.9 倍魔攻伤害。',
-       fx:[{k:'dmg', mult:0.9, scope:'allEnemy'}]}
+      {key:'s1', name:'地刺', cost:2, target:'enemy', desc:'造成 1.5 倍伤害并使目标法抗 -15%（2 回合）。',
+       fx:[{k:'dmg', mult:1.5, scope:'enemy'},{k:'debuffMdef', pct:0.15, turns:2, scope:'enemy'}]},
+      {key:'s2', name:'地鸣', cost:3, target:'allEnemy', desc:'对敌方全体造成 1.15 倍魔攻伤害。',
+       fx:[{k:'dmg', mult:1.15, scope:'allEnemy'}]}
     ],
-    {name:'大地震怒', target:'allEnemy', desc:'全体 1.6 倍伤害，并削减敌方法抗 15%（2 回合）。',
-     fx:[{k:'dmg', mult:1.6, scope:'allEnemy'},{k:'debuffMdef', pct:0.15, turns:2, scope:'allEnemy'}]}),
+    {name:'大地震怒', target:'allEnemy', desc:'全体 1.6 倍伤害，并无视敌方法抗 20%。',
+     fx:[{k:'dmg', mult:1.6, ignoreMdef:0.20, scope:'allEnemy'}]}),
+
   /* ===== 新增6英雄 ===== */
   H('yanlong','炎龙','炎龙武者','warrior','fire',{hp:920,atk:118,def:55,matk:98,mdef:52},
-    {type:'hybridBoost', name:'龙焰共鸣', desc:'造成魔法伤害时额外+20%，造成物理伤害时+10%'},
+    {type:'hybridBoost', name:'龙焰共鸣', desc:'造成魔法伤害时额外 +20%，造成物理伤害时 +10%'},
     '龙爪', [
-      {key:'s1', name:'烈焰龙爪', cost:2, target:'enemy', desc:'造成1.5倍攻击伤害+0.8倍魔攻的火焰混伤。',
-       fx:[{k:'dmg', mult:1.5, scope:'enemy'},{k:'dmg', mult:0.8, mag:true, scope:'enemy'}]},
-      {key:'s2', name:'龙息焚天', cost:3, target:'allEnemy', desc:'全体1.0倍攻击+0.6倍魔攻混伤，目标防御-15%（2回合）。',
-       fx:[{k:'dmg', mult:1.0, scope:'allEnemy'},{k:'dmg', mult:0.6, mag:true, scope:'allEnemy'},{k:'debuffDef', pct:0.15, turns:2, scope:'allEnemy'}]}
+      {key:'s1', name:'烈焰龙爪', cost:2, target:'enemy', desc:'造成 1.1 倍攻击伤害 + 0.7 倍魔攻的火焰物理伤害。',
+       fx:[{k:'dmg', mult:1.1, scope:'enemy'},{k:'dmg', mult:0.7, mag:true, scope:'enemy'}]},
+      {key:'s2', name:'龙息焚天', cost:3, target:'allEnemy', desc:'全体 0.8 倍攻击 + 0.5 倍魔攻的火焰魔法伤害，目标法抗 -15%（2 回合）。',
+       fx:[{k:'dmg', mult:0.8, scope:'allEnemy'},{k:'dmg', mult:0.5, mag:true, scope:'allEnemy'},{k:'debuffMdef', pct:0.15, turns:2, scope:'allEnemy'}]}
     ],
-    {name:'真龙降临', target:'allEnemy', desc:'全体1.3倍攻击+1.0倍魔攻混伤，自身攻击和魔攻+15%（2回合）。',
-     fx:[{k:'dmg', mult:1.3, scope:'allEnemy'},{k:'dmg', mult:1.0, mag:true, scope:'allEnemy'},{k:'buffAtk', pct:0.15, turns:2, scope:'self'},{k:'buffMatk', pct:0.15, turns:2, scope:'self'}]}),
+    {name:'真龙降临', target:'enemy', desc:'自身攻击和魔攻 +20%（2 回合），对敌方单体造成 1.5 倍攻击物理伤害，而后对敌方群体造成 0.9 倍魔攻魔法伤害。',
+     fx:[{k:'buffAtk', pct:0.20, turns:2, scope:'self'},{k:'buffMatk', pct:0.20, turns:2, scope:'self'},{k:'dmg', mult:1.5, scope:'enemy'},{k:'dmg', mult:0.9, mag:true, scope:'allEnemy'}]}),
 
   H('cuiying','翠影','翠影舞者','assassin','grass',{hp:740,atk:158,def:40,matk:55,mdef:38},
-    {type:'comboGrowth', name:'连击精通', desc:'每次技能命中后，下次攻击伤害+10%（最多3层）', ratio:0.10},
+    {type:'comboSpend', name:'连击精通', desc:'释放连击技能时，可额外消耗支援点增加连击数，每消耗 1 点支援点获得 1 次额外连击和 1 点充能。'},
     '影袭', [
-      {key:'s1', name:'翠叶连舞', cost:2, target:'enemy', desc:'连续攻击4次，每次0.5倍攻击。',
-       fx:[{k:'dmg', mult:0.5, hits:4, scope:'enemy'}]},
-      {key:'s2', name:'影杀突刺', cost:3, target:'enemy', desc:'2.2倍攻击伤害，目标防御-20%（2回合），自身充能+1。',
-       fx:[{k:'dmg', mult:2.2, scope:'enemy'},{k:'debuffDef', pct:0.20, turns:2, scope:'enemy'},{k:'energy', amt:1, scope:'self'}]}
+      {key:'s1', name:'翠叶连舞', cost:2, target:'enemy', desc:'连续攻击 3 次，每次 0.6 倍攻击，可消耗额外支援点增加连击。',
+       fx:[{k:'dmg', mult:0.6, hits:3, scope:'enemy'}]},
+      {key:'s2', name:'影杀突刺', cost:3, target:'enemy', desc:'连续攻击 4 次，每次 0.55 倍攻击，目标防御 -10%（2 回合），可消耗额外支援点增加连击。',
+       fx:[{k:'dmg', mult:0.55, hits:4, scope:'enemy'},{k:'debuffDef', pct:0.10, turns:2, scope:'enemy'}]}
     ],
-    {name:'千影幻杀', target:'enemy', desc:'连续攻击6次，每次0.55倍攻击，无视20%防御。',
-     fx:[{k:'dmg', mult:0.55, hits:6, scope:'enemy'}]}),
+    {name:'千影幻杀', target:'enemy', desc:'连续攻击 6 次，每次 0.5 倍攻击，无视 20% 防御。',
+     fx:[{k:'dmg', mult:0.5, hits:6, ignoreDef:0.20, scope:'enemy'}]}),
 
   H('xuanbing','玄冰','玄冰守卫','tank','water',{hp:1180,atk:95,def:92,matk:65,mdef:88},
-    {type:'frostArmor', name:'冰霜护甲', desc:'受到伤害时25%概率使攻击者攻击-15%（2回合），自身防御+5%', ratio:0.25},
+    {type:'frostArmor', name:'冰霜护甲', desc:'受到伤害时 25% 概率使攻击者攻击 -15%（2 回合），触发时自身防御 +6%（4 回合）', ratio:0.25},
     '冰击', [
-      {key:'s1', name:'冰霜重击', cost:2, target:'enemy', desc:'1.3倍攻击伤害，目标攻击-20%（2回合）。',
-       fx:[{k:'dmg', mult:1.3, scope:'enemy'},{k:'debuffAtk', pct:0.20, turns:2, scope:'enemy'}]},
-      {key:'s2', name:'极寒壁垒', cost:3, target:'self', desc:'自身获得2.5倍攻击护盾，全体友军法抗+15%（2回合）。',
-       fx:[{k:'shield', mult:2.5, scope:'self'},{k:'buffMdef', pct:0.15, turns:2, scope:'allAlly'}]}
+      {key:'s1', name:'冰霜重击', cost:2, target:'enemy', desc:'1.5 倍攻击伤害，目标攻击 -10%（2 回合）。',
+       fx:[{k:'dmg', mult:1.5, scope:'enemy'},{k:'debuffAtk', pct:0.10, turns:2, scope:'enemy'}]},
+      {key:'s2', name:'极寒壁垒', cost:3, target:'self', desc:'自身获得 1.8 倍攻击护盾，全体友军法抗 +15%（2 回合）。',
+       fx:[{k:'shield', mult:1.8, scope:'self'},{k:'buffMdef', pct:0.15, turns:2, scope:'allAlly'}]}
     ],
-    {name:'冰封万里', target:'allEnemy', desc:'全体1.2倍攻击伤害，目标攻击和速度-15%（2回合），自身获得180护盾。',
-     fx:[{k:'dmg', mult:1.2, scope:'allEnemy'},{k:'debuffAtk', pct:0.15, turns:2, scope:'allEnemy'},{k:'shield', v:180, scope:'self'}]}),
+    {name:'冰封万里', target:'allEnemy', desc:'全体 1.2 倍攻击伤害，目标攻击 -15%（2 回合），自身获得 1.0 倍攻击护盾。',
+     fx:[{k:'dmg', mult:1.2, scope:'allEnemy'},{k:'debuffAtk', pct:0.15, turns:2, scope:'allEnemy'},{k:'shield', mult:1.0, scope:'self'}]}),
 
   H('zidian','紫电','紫电贤者','mage','elec',{hp:760,atk:55,def:38,matk:158,mdef:52},
-    {type:'overcharge', name:'过载', desc:'充能高于50%时技能伤害+15%，释放技能后额外+1充能'},
+    {type:'overcharge', name:'过载', desc:'充能低于 50% 时释放技能获得 1 点充能，充能高于 50% 时技能伤害 +20%'},
     '电浆弹', [
-      {key:'s1', name:'电弧冲击', cost:2, target:'enemy', desc:'1.8倍魔攻雷电伤害，目标法抗-15%（2回合）。',
-       fx:[{k:'dmg', mult:1.8, scope:'enemy'},{k:'debuffMdef', pct:0.15, turns:2, scope:'enemy'}]},
-      {key:'s2', name:'雷云密布', cost:3, target:'allEnemy', desc:'全体0.95倍魔攻伤害，30%概率使目标眩晕1回合。',
-       fx:[{k:'dmg', mult:0.95, scope:'allEnemy'}]}
+      {key:'s1', name:'电弧冲击', cost:2, target:'enemy', desc:'1.5 倍魔攻雷电伤害，目标法抗 -15%（2 回合）。',
+       fx:[{k:'dmg', mult:1.5, scope:'enemy'},{k:'debuffMdef', pct:0.15, turns:2, scope:'enemy'}]},
+      {key:'s2', name:'雷云密布', cost:3, target:'allEnemy', desc:'全体 1.0 倍魔攻伤害，20% 概率使目标眩晕 1 回合。',
+       fx:[{k:'dmg', mult:1.0, scope:'allEnemy'},{k:'stun', chance:0.20, turns:1, scope:'allEnemy'}]}
     ],
-    {name:'天罚雷霆', target:'allEnemy', desc:'全体1.6倍魔攻雷电伤害，自身魔攻+20%（2回合）。',
-     fx:[{k:'dmg', mult:1.6, scope:'allEnemy'},{k:'buffMatk', pct:0.20, turns:2, scope:'self'}]}),
+    {name:'天罚雷霆', target:'allEnemy', desc:'全体 1.6 倍魔攻雷电伤害，增加自身 0.1 倍魔攻的防御和法抗（2 回合）。',
+     fx:[{k:'dmg', mult:1.6, scope:'allEnemy'},{k:'flatBuff', stat:'def', mult:0.1, turns:2, scope:'self'},{k:'flatBuff', stat:'mdef', mult:0.1, turns:2, scope:'self'}]}),
 
   H('xiangkong','翔空','翔空祭司','support','wind',{hp:800,atk:62,def:44,matk:128,mdef:60},
-    {type:'tailwind', name:'顺风', desc:'己方释放技能时20%概率返还1点支援点', ratio:0.20},
+    {type:'tailwind', name:'顺风', desc:'己方每次消耗支援点时，20% 概率返还 1 点支援点，支援点可溢出超过上限', ratio:0.20, overflow:true},
     '风刃', [
-      {key:'s1', name:'翔空祝福', cost:2, target:'ally', desc:'友军攻击+20%和速度+15%（2回合），充能+1。',
-       fx:[{k:'buffAtk', pct:0.20, turns:2, scope:'ally'},{k:'energy', amt:1, scope:'ally'}]},
-      {key:'s2', name:'风之壁障', cost:3, target:'allAlly', desc:'全体友军获得150护盾，治疗0.8倍魔攻生命。',
-       fx:[{k:'shield', v:150, scope:'allAlly'},{k:'heal', mult:0.8, scope:'allAlly'}]}
+      {key:'s1', name:'翔空祝福', cost:2, target:'ally', desc:'友军攻击、防御、法抗均 +15%，充能 +1。',
+       fx:[{k:'buffAtk', pct:0.15, turns:2, scope:'ally'},{k:'buffDef', pct:0.15, turns:2, scope:'ally'},{k:'buffMdef', pct:0.15, turns:2, scope:'ally'},{k:'energy', amt:1, scope:'ally'}]},
+      {key:'s2', name:'风之壁障', cost:3, target:'allAlly', desc:'全体友军获得 0.5 倍魔攻护盾，治疗 0.6 倍魔攻生命。',
+       fx:[{k:'shield', mult:0.5, scope:'allAlly'},{k:'heal', mult:0.6, scope:'allAlly'}]}
     ],
-    {name:'天风庇护', target:'allAlly', desc:'全体友军恢复1.3倍魔攻生命，充能+2，获得120护盾。',
-     fx:[{k:'heal', mult:1.3, scope:'allAlly'},{k:'energy', amt:2, scope:'allAlly'},{k:'shield', v:120, scope:'allAlly'}]}),
+    {name:'天风庇护', target:'allAlly', desc:'全体友军恢复 1.4 倍魔攻生命，回复 4 个支援点。',
+     fx:[{k:'heal', mult:1.4, scope:'allAlly'},{k:'sp', amt:4, scope:'self'}]}),
 
   H('yankai','岩铠','岩铠斗士','warrior','earth',{hp:1050,atk:128,def:78,matk:55,mdef:72},
-    {type:'shieldSmash', name:'盾击', desc:'拥有护盾时技能伤害+20%，护盾被打破时对攻击者造成0.5倍攻击反伤'},
+    {type:'shieldSmash', name:'盾击', desc:'拥有护盾时技能伤害 +15%，护盾被打破时对攻击者造成 0.5 倍攻击反伤', boost:0.15},
     '岩拳', [
-      {key:'s1', name:'裂地猛击', cost:2, target:'enemy', desc:'1.6倍攻击伤害，自身获得120护盾。',
-       fx:[{k:'dmg', mult:1.6, scope:'enemy'},{k:'shield', v:120, scope:'self'}]},
-      {key:'s2', name:'岩铠冲锋', cost:3, target:'enemy', desc:'1.9倍攻击伤害，目标防御-20%（2回合），护盾存在时额外+30%伤害。',
-       fx:[{k:'dmg', mult:1.9, scope:'enemy'},{k:'debuffDef', pct:0.20, turns:2, scope:'enemy'}]}
+      {key:'s1', name:'裂地猛击', cost:2, target:'enemy', desc:'1.1 倍攻击伤害，自身获得 0.6 倍攻击护盾。',
+       fx:[{k:'dmg', mult:1.1, scope:'enemy'},{k:'shield', mult:0.6, scope:'self'}]},
+      {key:'s2', name:'岩铠冲锋', cost:3, target:'enemy', desc:'1.8 倍攻击伤害，目标防御 -15%（2 回合），护盾存在时被动技能伤害提升至 +30%。',
+       fx:[{k:'dmg', mult:1.8, shieldOverride:0.30, scope:'enemy'},{k:'debuffDef', pct:0.15, turns:2, scope:'enemy'}]}
     ],
-    {name:'山崩地裂', target:'allEnemy', desc:'全体1.4倍攻击伤害，全体友军获得100护盾，自身防御+20%（2回合）。',
-     fx:[{k:'dmg', mult:1.4, scope:'allEnemy'},{k:'shield', v:100, scope:'allAlly'},{k:'buffDef', pct:0.20, turns:2, scope:'self'}]}),
+    {name:'山崩地裂', target:'allEnemy', desc:'全体 1.2 倍攻击伤害，除自身外友军获得 0.4 倍攻击护盾，自身获得 0.8 倍攻击护盾。',
+     fx:[{k:'dmg', mult:1.2, scope:'allEnemy'},{k:'shield', mult:0.4, scope:'allAllyOther'},{k:'shield', mult:0.8, scope:'self'}]}),
 
 ];
 
@@ -2123,287 +2124,287 @@ const BEASTS = [
     ],
     {name:'烬灭冲撞', target:'allEnemy', desc:'全体 1.35 倍伤害。', fx:[{k:'dmg', mult:1.35, scope:'allEnemy'}]}),
   H('beast_grass','藤甲犀','厚皮兽','tank','grass',{hp:1050,atk:88,def:74,matk:70,mdef:74},
-    {type:'regen', name:'厚皮再生', desc:'己方行动阶段开始时恢复5%最大生命', ratio:0.05},
+    {type:'regen', name:'厚皮再生', desc:'己方行动阶段开始时自身恢复 6% 最大生命', ratio:0.06},
     '冲撞', [
-      {key:'s1', name:'藤蔓重踏', cost:2, target:'enemy', desc:'1.15 倍伤害并攻击 -20%。', fx:[{k:'dmg',mult:1.15,scope:'enemy'},{k:'debuffAtk',pct:.2,turns:2,scope:'enemy'}]},
+      {key:'s1', name:'藤蔓重踏', cost:2, target:'enemy', desc:'1.15 倍伤害并攻击 -20%（2回合）。', fx:[{k:'dmg',mult:1.15,scope:'enemy'},{k:'debuffAtk',pct:.2,turns:2,scope:'enemy'}]},
       {key:'s2', name:'树皮再生', cost:3, target:'self', desc:'恢复 1.8 倍攻击生命。', fx:[{k:'heal',mult:1.8,scope:'self'}]}
     ],
-    {name:'大地庇护', target:'allAlly', desc:'友军护盾 150。', fx:[{k:'shield',v:150,scope:'allAlly'}]}),
+    {name:'大地庇护', target:'allAlly', desc:'所有友军护盾 140。', fx:[{k:'shield',v:140,scope:'allAlly'}]}),
   H('beast_water','潮汐鳗','水栖兽','mage','water',{hp:700,atk:55,def:34,matk:136,mdef:42},
     {type:'idleChargeExtra', name:'涌流', desc:'待机时额外 +1 充能', extra:1},
     '水刺', [
-      {key:'s1', name:'水箭', cost:2, target:'enemy', desc:'1.5 倍魔攻伤害。', fx:[{k:'dmg',mult:1.5,scope:'enemy'}]},
-      {key:'s2', name:'激流漩涡', cost:3, target:'allEnemy', desc:'全体 0.85 倍魔攻伤害。', fx:[{k:'dmg',mult:.85,scope:'allEnemy'}]}
+      {key:'s1', name:'水箭', cost:2, target:'enemy', desc:'1.6 倍魔攻伤害。', fx:[{k:'dmg',mult:1.6,scope:'enemy'}]},
+      {key:'s2', name:'激流漩涡', cost:3, target:'allEnemy', desc:'全体 1.0 倍魔攻伤害。', fx:[{k:'dmg',mult:1.0,scope:'allEnemy'}]}
     ],
-    {name:'海啸', target:'allEnemy', desc:'全体 1.7 倍魔攻伤害。', fx:[{k:'dmg',mult:1.7,scope:'allEnemy'}]}),
+    {name:'海啸', target:'allEnemy', desc:'全体 1.6 倍魔攻伤害。', fx:[{k:'dmg',mult:1.6,scope:'allEnemy'}]}),
   H('beast_elec','雷纹豹','迅雷兽','assassin','elec',{hp:690,atk:136,def:38,matk:40,mdef:34},
     {type:'attackChargeExtra', name:'迅击', desc:'普攻额外 +1 充能', extra:1},
     '雷爪', [
       {key:'s1', name:'雷影连击', cost:2, target:'enemy', desc:'2 次 × 0.85 倍伤害。', fx:[{k:'dmg',mult:.85,hits:2,scope:'enemy'}]},
-      {key:'s2', name:'奔雷咬', cost:3, target:'enemy', desc:'2.05 倍伤害。', fx:[{k:'dmg',mult:2.05,scope:'enemy'}]}
+      {key:'s2', name:'奔雷咬', cost:3, target:'enemy', desc:'2.1 倍伤害。', fx:[{k:'dmg',mult:2.1,scope:'enemy'}]}
     ],
-    {name:'雷暴突袭', target:'enemy', desc:'单体 2.5 倍伤害。', fx:[{k:'dmg',mult:2.5,scope:'enemy'}]}),
-  H('beast_minion','深渊魔侍','召唤物','assassin','water',{hp:260,atk:48,def:16,matk:44,mdef:18},
-    {type:'stoneSkin', name:'幽影外壳', desc:'己方每个行动阶段首次受到伤害 -15%', ratio:0.15},
+    {name:'雷暴突袭', target:'enemy', desc:'单体 2.7 倍伤害。', fx:[{k:'dmg',mult:2.7,scope:'enemy'}]}),
+  H('beast_minion','深渊魔侍','召唤物','assassin','water',{hp:270,atk:50,def:20,matk:36,mdef:22},
+    {type:'stoneSkin', name:'幽影外壳', desc:'每个行动阶段自身首次受到伤害 -20%', ratio:0.20},
     '暗影爪', [
-      {key:'s1', name:'魔影刺', cost:1, target:'enemy', desc:'1.25 倍物理伤害。', fx:[{k:'dmg',mult:1.25,scope:'enemy'}]}
+      {key:'s1', name:'魔影刺', cost:1, target:'enemy', desc:'1.3 倍物理伤害。', fx:[{k:'dmg',mult:1.3,scope:'enemy'}]}
     ],
     {name:'深渊冲击', target:'enemy', desc:'单体 1.8 倍伤害。', fx:[{k:'dmg',mult:1.8,scope:'enemy'}]}),
   H('beast_summoner','深渊祭司','唤潮召唤者','mage','water',{hp:720,atk:56,def:36,matk:142,mdef:58},
-    {type:'skillSP', name:'魔力回流', desc:'每次释放技能后，全队 +1 支援点'},
+    {type:'skillSP', name:'魔力回流', desc:'自身每次释放技能后，全队 +1 支援点'},
     '深渊水弹', [
-      {key:'s1', name:'深渊水弹', cost:2, target:'enemy', desc:'1.5 倍魔攻伤害。', fx:[{k:'dmg',mult:1.5,mag:true,scope:'enemy'}]},
+      {key:'s1', name:'深渊水弹', cost:2, target:'enemy', desc:'1.6 倍魔攻伤害。', fx:[{k:'dmg',mult:1.6,mag:true,scope:'enemy'}]},
       {key:'s2', name:'召唤魔侍', cost:3, cd:5, target:'none', desc:'冷却 5 阶段。召唤深渊魔侍加入我方，场上同类最多 3 名。',
        summon:{defId:'beast_minion', max:3}, fx:[]}
     ],
-    {name:'深渊之潮', target:'allEnemy', desc:'全体 1.35 倍魔攻伤害。', fx:[{k:'dmg',mult:1.35,mag:true,scope:'allEnemy'}]}),
+    {name:'深渊之潮', target:'allEnemy', desc:'全体 1.4 倍魔攻伤害。', fx:[{k:'dmg',mult:1.4,mag:true,scope:'allEnemy'}]}),
   H('ablock','阿布拉克','巨岩泰坦','tank','earth',{hp:1280,atk:108,def:88,matk:70,mdef:86},
-    {type:'stoneSkin', name:'泰坦装甲', desc:'己方每个行动阶段首次受到伤害 -45%', ratio:0.45},
+    {type:'stoneSkin', name:'泰坦装甲', desc:'每个行动阶段自身首次受到伤害 -35%', ratio:0.35},
     '巨岩轰拳', [
       {key:'s1', name:'地震重踏', cost:2, target:'allEnemy', desc:'全体 0.85 倍伤害。', fx:[{k:'dmg',mult:.85,scope:'allEnemy'}]},
-      {key:'s2', name:'晶壁愈合', cost:3, target:'self', desc:'恢复 1.2 倍攻击生命并获得 90 护盾。', fx:[{k:'heal',mult:1.2,scope:'self'},{k:'shield',v:90,scope:'self'}]}
+      {key:'s2', name:'晶壁愈合', cost:3, target:'self', desc:'恢复 1.0 倍攻击生命并获得 90 护盾。', fx:[{k:'heal',mult:1.0,scope:'self'},{k:'shield',v:90,scope:'self'}]}
     ],
-    {name:'泰坦审判', target:'allEnemy', desc:'全体 1.75 倍恐怖伤害。', fx:[{k:'dmg',mult:1.75,scope:'allEnemy'}]})
+    {name:'泰坦审判', target:'allEnemy', desc:'全体 1.6 倍恐怖伤害。', fx:[{k:'dmg',mult:1.6,scope:'allEnemy'}]})
 ];
 
 
 const NEW_BEASTS = [
   H('beast_fire2','炎魔领主','炼狱领主','warrior','fire',{hp:920,atk:142,def:62,matk:55,mdef:48},
-    {type:'warCry', name:'烈焰狂怒', desc:'每次释放技能后攻击 +8%（最多3层）', ratio:0.08},
+    {type:'warCry', name:'烈焰狂怒', desc:'每次释放技能后攻击 +6%（最多3层）', ratio:0.06, maxLayers:3},
     '熔岩拳', [
-      {key:'s1', name:'地狱火冲', cost:2, target:'enemy', desc:'1.8倍攻击火焰伤害，自身攻击+10%（2回合）。',
-       fx:[{k:'dmg',mult:1.8,scope:'enemy'},{k:'buffAtk',pct:0.10,turns:2,scope:'self'}]},
-      {key:'s2', name:'烈焰风暴', cost:3, target:'allEnemy', desc:'全体1.0倍火焰伤害。',
-       fx:[{k:'dmg',mult:1.0,scope:'allEnemy'}]}
+      {key:'s1', name:'地狱火冲', cost:2, target:'enemy', desc:'1.5倍攻击火焰伤害，自身攻击+10%（2回合）。',
+       fx:[{k:'dmg',mult:1.5,scope:'enemy'},{k:'buffAtk',pct:0.10,turns:2,scope:'self'}]},
+      {key:'s2', name:'烈焰风暴', cost:3, target:'allEnemy', desc:'全体1.1倍火焰伤害。',
+       fx:[{k:'dmg',mult:1.1,scope:'allEnemy'}]}
     ],
-    {name:'炼狱降临', target:'allEnemy', desc:'全体1.6倍火焰伤害，自身获得150护盾。',
-     fx:[{k:'dmg',mult:1.6,scope:'allEnemy'},{k:'shield',v:150,scope:'self'}]}),
+    {name:'炼狱降临', target:'allEnemy', desc:'全体1.3倍火焰伤害，自身获得160护盾。',
+     fx:[{k:'dmg',mult:1.3,scope:'allEnemy'},{k:'shield',v:160,scope:'self'}]}),
 
   H('beast_grass2','古树守卫','远古树灵','tank','grass',{hp:1350,atk:92,def:95,matk:80,mdef:90},
-    {type:'thorn', name:'根须缠绕', desc:'受到直接伤害时反弹30%给攻击者', ratio:0.30},
+    {type:'thorn', name:'根须缠绕', desc:'受到直接伤害时反弹24%给攻击者', ratio:0.24},
     '根须击', [
-      {key:'s1', name:'藤蔓束缚', cost:2, target:'enemy', desc:'1.0倍伤害，目标防御-25%（2回合）。',
-       fx:[{k:'dmg',mult:1.0,scope:'enemy'},{k:'debuffDef',pct:0.25,turns:2,scope:'enemy'}]},
-      {key:'s2', name:'自然恢复', cost:3, target:'allAlly', desc:'全体友军恢复0.8倍攻击生命。',
-       fx:[{k:'heal',mult:0.8,scope:'allAlly'}]}
+      {key:'s1', name:'古树缠绕', cost:2, target:'enemy', desc:'1.1倍伤害，目标防御-20%（2回合）。',
+       fx:[{k:'dmg',mult:1.1,scope:'enemy'},{k:'debuffDef',pct:0.20,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'自然恢复', cost:3, target:'allAlly', desc:'全体友军恢复0.6倍攻击生命。',
+       fx:[{k:'heal',mult:0.6,scope:'allAlly'}]}
     ],
-    {name:'远古之怒', target:'allEnemy', desc:'全体1.3倍伤害，全体友军获得120护盾。',
-     fx:[{k:'dmg',mult:1.3,scope:'allEnemy'},{k:'shield',v:120,scope:'allAlly'}]}),
+    {name:'远古之怒', target:'allEnemy', desc:'全体 1.1 倍伤害，全体友军获得60护盾。',
+     fx:[{k:'dmg',mult:1.1,scope:'allEnemy'},{k:'shield',v:60,scope:'allAlly'}]}),
 
   H('beast_water2','海妖歌姬','深海歌者','support','water',{hp:780,atk:50,def:40,matk:145,mdef:72},
-    {type:'shieldLowStart', name:'深海护佑', desc:'己方行动阶段开始时，为生命比例最低的友军添加0.6倍魔攻的护盾', mult:0.6},
+    {type:'shieldLowStart', name:'深海护佑', desc:'己方行动阶段开始时，为生命比例最低的友军添加0.4倍魔攻的护盾', mult:0.4},
     '水之歌', [
-      {key:'s1', name:'治愈咏唱', cost:2, target:'ally', desc:'治疗友军2.0倍魔攻生命，目标充能+1。',
-       fx:[{k:'heal',mult:2.0,scope:'ally'},{k:'energy',amt:1,scope:'ally'}]},
-      {key:'s2', name:'寒冰乐章', cost:3, target:'allEnemy', desc:'全体0.7倍魔攻伤害，目标攻击-15%（2回合）。',
-       fx:[{k:'dmg',mult:0.7,scope:'allEnemy'},{k:'debuffAtk',pct:0.15,turns:2,scope:'allEnemy'}]}
+      {key:'s1', name:'治愈咏唱', cost:2, target:'ally', desc:'治疗友军1.5倍魔攻生命，目标充能+1。',
+       fx:[{k:'heal',mult:1.5,scope:'ally'},{k:'energy',amt:1,scope:'ally'}]},
+      {key:'s2', name:'寒冰乐章', cost:3, target:'allEnemy', desc:'全体0.9倍魔攻伤害，目标攻击-10%（2回合）。',
+       fx:[{k:'dmg',mult:0.9,scope:'allEnemy'},{k:'debuffAtk',pct:0.10,turns:2,scope:'allEnemy'}]}
     ],
-    {name:'深海安魂曲', target:'allAlly', desc:'全体友军恢复1.2倍魔攻生命，充能+2。',
-     fx:[{k:'heal',mult:1.2,scope:'allAlly'},{k:'energy',amt:2,scope:'allAlly'}]}),
+    {name:'深海安魂曲', target:'allAlly', desc:'全体友军恢复1.3倍魔攻生命，充能+1。',
+     fx:[{k:'heal',mult:1.3,scope:'allAlly'},{k:'energy',amt:1,scope:'allAlly'}]}),
 
   H('beast_elec2','雷霆战神','闪电武者','warrior','elec',{hp:950,atk:148,def:55,matk:50,mdef:45},
-    {type:'attackChargeExtra', name:'雷电迅捷', desc:'普攻额外+2充能', extra:2},
+    {type:'skillChargeExtra', name:'雷电迅捷', desc:'技能额外+1充能'},
     '雷刃斩', [
-      {key:'s1', name:'闪电突刺', cost:2, target:'enemy', desc:'1.9倍雷电伤害，30%概率连击。',
-       fx:[{k:'dmg',mult:1.9,scope:'enemy'}]},
-      {key:'s2', name:'雷鸣斩', cost:3, target:'enemy', desc:'2.2倍伤害，目标防御-20%（2回合）。',
-       fx:[{k:'dmg',mult:2.2,scope:'enemy'},{k:'debuffDef',pct:0.20,turns:2,scope:'enemy'}]}
+      {key:'s1', name:'闪电突刺', cost:2, target:'enemy', desc:'1.5倍雷电伤害，30%概率额外造成一次0.6倍攻击伤害。',
+       fx:[{k:'dmg',mult:1.5,scope:'enemy',extraHitChance:0.30,extraHitMult:0.6}]},
+      {key:'s2', name:'雷鸣斩', cost:3, target:'enemy', desc:'2.0倍伤害，目标防御-15%（2回合）。',
+       fx:[{k:'dmg',mult:2.0,scope:'enemy'},{k:'debuffDef',pct:0.15,turns:2,scope:'enemy'}]}
     ],
-    {name:'九天雷霆', target:'allEnemy', desc:'全体1.5倍雷电伤害，自身充能+3。',
-     fx:[{k:'dmg',mult:1.5,scope:'allEnemy'},{k:'energy',amt:3,scope:'self'}]}),
+    {name:'九天雷霆', target:'allEnemy', desc:'全体1.4倍雷电伤害，我方sp+2。',
+     fx:[{k:'dmg',mult:1.4,scope:'allEnemy'},{k:'sp',amt:2,scope:'self'}]}),
 
   H('beast_wind2','风刃刺客','疾风杀手','assassin','wind',{hp:720,atk:165,def:38,matk:45,mdef:35},
-    {type:'slay', name:'致命一击', desc:'对生命低于45%的目标伤害+25%', threshold:0.45, bonus:0.25},
+    {type:'slay', name:'致命一击', desc:'对生命低于60%的目标伤害+20%', threshold:0.60, bonus:0.20},
     '风刃', [
-      {key:'s1', name:'疾风连斩', cost:2, target:'enemy', desc:'3次×0.7倍攻击伤害。',
-       fx:[{k:'dmg',mult:0.7,hits:3,scope:'enemy'}]},
-      {key:'s2', name:'致命穿刺', cost:3, target:'enemy', desc:'2.4倍伤害，无视30%防御。',
-       fx:[{k:'dmg',mult:2.4,scope:'enemy'}]}
+      {key:'s1', name:'疾风连斩', cost:2, target:'enemy', desc:'3次×0.6倍攻击伤害。',
+       fx:[{k:'dmg',mult:0.6,hits:3,scope:'enemy'}]},
+      {key:'s2', name:'致命穿刺', cost:3, target:'enemy', desc:'2.0倍伤害，无视25%防御。',
+       fx:[{k:'dmg',mult:2.0,ignoreDef:0.25,scope:'enemy'}]}
     ],
-    {name:'千风刃舞', target:'allEnemy', desc:'全体1.3倍伤害，自身攻击+15%（2回合）。',
-     fx:[{k:'dmg',mult:1.3,scope:'allEnemy'},{k:'buffAtk',pct:0.15,turns:2,scope:'self'}]}),
+    {name:'千风刃舞', target:'allEnemy', desc:'全体1.25倍伤害，自身攻击+15%（2回合）。',
+     fx:[{k:'dmg',mult:1.25,scope:'allEnemy'},{k:'buffAtk',pct:0.15,turns:2,scope:'self'}]}),
 
   H('beast_earth2','岩石巨像','大地守护者','tank','earth',{hp:1450,atk:100,def:100,matk:60,mdef:95},
-    {type:'stoneSkin', name:'巨像护甲', desc:'己方每阶段首次受到伤害-35%', ratio:0.35},
+    {type:'stoneSkin', name:'巨像护甲', desc:'己方每阶段首次受到伤害-25%', ratio:0.25},
     '岩石拳', [
-      {key:'s1', name:'地震波', cost:2, target:'allEnemy', desc:'全体0.9倍伤害，目标攻击-15%（2回合）。',
-       fx:[{k:'dmg',mult:0.9,scope:'allEnemy'},{k:'debuffAtk',pct:0.15,turns:2,scope:'allEnemy'}]},
+      {key:'s1', name:'地震波', cost:2, target:'allEnemy', desc:'全体0.7倍伤害，目标攻击-15%（2回合）。',
+       fx:[{k:'dmg',mult:0.7,scope:'allEnemy'},{k:'debuffAtk',pct:0.15,turns:2,scope:'allEnemy'}]},
       {key:'s2', name:'岩石壁垒', cost:3, target:'allAlly', desc:'全体友军获得180护盾。',
        fx:[{k:'shield',v:180,scope:'allAlly'}]}
     ],
-    {name:'大地崩裂', target:'allEnemy', desc:'全体1.7倍伤害，目标防御-20%（2回合）。',
-     fx:[{k:'dmg',mult:1.7,scope:'allEnemy'},{k:'debuffDef',pct:0.20,turns:2,scope:'allEnemy'}]}),
+    {name:'巨像崩裂', target:'allEnemy', desc:'全体1.55倍伤害，目标防御-10%（2回合）。',
+     fx:[{k:'dmg',mult:1.55,scope:'allEnemy'},{k:'debuffDef',pct:0.10,turns:2,scope:'allEnemy'}]}),
 
   H('beast_dark','暗影领主','深渊统治者','mage','fire',{hp:820,atk:65,def:45,matk:168,mdef:65},
-    {type:'skillSP', name:'黑暗汲取', desc:'每次释放技能后全队+1支援点'},
+    {type:'skillSP', name:'黑暗汲取', desc:'每次释放技能后全队+1支援点，释放大招后全队支援点+2', ultSPBonus:2},
     '暗影弹', [
-      {key:'s1', name:'暗影箭', cost:2, target:'enemy', desc:'1.6倍魔攻伤害，目标法抗-20%（2回合）。',
-       fx:[{k:'dmg',mult:1.6,mag:true,scope:'enemy'}]},
-      {key:'s2', name:'黑暗领域', cost:3, target:'allEnemy', desc:'全体0.95倍魔攻伤害。',
-       fx:[{k:'dmg',mult:0.95,mag:true,scope:'allEnemy'}]}
+      {key:'s1', name:'暗影箭', cost:2, target:'enemy', desc:'1.5倍魔攻伤害，目标法抗-15%（2回合）。',
+       fx:[{k:'dmg',mult:1.5,mag:true,scope:'enemy'},{k:'debuffMdef',pct:0.15,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'黑暗领域', cost:3, target:'allEnemy', desc:'全体1.1倍魔攻伤害。',
+       fx:[{k:'dmg',mult:1.1,mag:true,scope:'allEnemy'}]}
     ],
-    {name:'深渊审判', target:'allEnemy', desc:'全体1.7倍魔法伤害，自身魔攻+20%（2回合）。',
-     fx:[{k:'dmg',mult:1.7,mag:true,scope:'allEnemy'},{k:'buffMatk',pct:0.20,turns:2,scope:'self'}]}),
+    {name:'深渊审判', target:'allEnemy', desc:'全体1.4倍魔法伤害，自身魔攻+20%（2回合）。',
+     fx:[{k:'dmg',mult:1.4,mag:true,scope:'allEnemy'},{k:'buffMatk',pct:0.20,turns:2,scope:'self'}]}),
 
   H('beast_ice','冰霜女巫','极寒法师','mage','water',{hp:760,atk:58,def:38,matk:160,mdef:60},
-    {type:'idleChargeExtra', name:'寒冰凝聚', desc:'待机时额外+2充能', extra:2},
+    {type:'idleChargeSP', name:'寒冰凝聚', desc:'待机时额外+1充能和+1支援点', extra:1},
     '冰锥术', [
-      {key:'s1', name:'冰霜新星', cost:2, target:'allEnemy', desc:'全体0.8倍魔攻伤害，目标攻击-10%（2回合）。',
-       fx:[{k:'dmg',mult:0.8,scope:'allEnemy'},{k:'debuffAtk',pct:0.10,turns:2,scope:'allEnemy'}]},
-      {key:'s2', name:'极寒穿刺', cost:3, target:'enemy', desc:'2.4倍魔攻伤害。',
-       fx:[{k:'dmg',mult:2.4,scope:'enemy'}]}
+      {key:'s1', name:'冰霜新星', cost:2, target:'allEnemy', desc:'全体0.7倍魔攻伤害，目标攻击-10%（2回合）。',
+       fx:[{k:'dmg',mult:0.7,scope:'allEnemy'},{k:'debuffAtk',pct:0.10,turns:2,scope:'allEnemy'}]},
+      {key:'s2', name:'极寒穿刺', cost:3, target:'enemy', desc:'2.2倍魔攻伤害。',
+       fx:[{k:'dmg',mult:2.2,scope:'enemy'}]}
     ],
-    {name:'绝对零度', target:'allEnemy', desc:'全体1.55倍伤害，目标法抗-15%（2回合）。',
-     fx:[{k:'dmg',mult:1.55,scope:'allEnemy'},{k:'debuffMdef',pct:0.15,turns:2,scope:'allEnemy'}]}),
+    {name:'绝对零度', target:'allEnemy', desc:'全体1.4倍伤害，目标法抗-10%（2回合）。',
+     fx:[{k:'dmg',mult:1.4,scope:'allEnemy'},{k:'debuffMdef',pct:0.10,turns:2,scope:'allEnemy'}]}),
 
   H('beast_light','光明圣骑士','圣光守护者','warrior','grass',{hp:1050,atk:125,def:75,matk:90,mdef:80},
     {type:'siphon', name:'圣光治愈', desc:'造成伤害的20%转化为自身治疗', ratio:0.20},
     '圣光斩', [
-      {key:'s1', name:'神圣冲击', cost:2, target:'enemy', desc:'1.6倍伤害，自身恢复0.5倍攻击生命。',
-       fx:[{k:'dmg',mult:1.6,scope:'enemy'},{k:'heal',mult:0.5,scope:'self'}]},
-      {key:'s2', name:'圣光庇护', cost:3, target:'allAlly', desc:'全体友军获得130护盾，恢复0.5倍攻击生命。',
-       fx:[{k:'shield',v:130,scope:'allAlly'},{k:'heal',mult:0.5,scope:'allAlly'}]}
+      {key:'s1', name:'神圣冲击', cost:2, target:'enemy', desc:'1.4倍伤害，自身恢复0.4倍攻击生命。',
+       fx:[{k:'dmg',mult:1.4,scope:'enemy'},{k:'heal',mult:0.4,scope:'self'}]},
+      {key:'s2', name:'圣光庇护', cost:3, target:'allAlly', desc:'全体友军获得 0.7 倍攻击护盾，恢复 0.4 倍攻击生命。',
+       fx:[{k:'shield',mult:0.7,scope:'allAlly'},{k:'heal',mult:0.4,scope:'allAlly'}]}
     ],
-    {name:'神圣审判', target:'allEnemy', desc:'全体1.45倍伤害，全体友军恢复0.8倍攻击生命。',
-     fx:[{k:'dmg',mult:1.45,scope:'allEnemy'},{k:'heal',mult:0.8,scope:'allAlly'}]}),
+    {name:'神圣审判', target:'allEnemy', desc:'全体1.4 倍伤害，全体友军恢复 0.4 倍攻击生命。',
+     fx:[{k:'dmg',mult:1.4,scope:'allEnemy'},{k:'heal',mult:0.4,scope:'allAlly'}]}),
 
   H('beast_poison','剧毒蝎后','毒沼女王','assassin','grass',{hp:740,atk:158,def:40,matk:70,mdef:42},
-    {type:'slay', name:'剧毒侵蚀', desc:'对生命低于60%的目标伤害+20%', threshold:0.60, bonus:0.20},
+    {type:'poisonAttack', name:'剧毒侵蚀', desc:'攻击使目标在后两回合阶段开始时，受到0.4倍攻击伤害', mult:0.4, turns:2},
     '毒尾刺', [
-      {key:'s1', name:'毒液喷射', cost:2, target:'enemy', desc:'1.5倍伤害，目标攻击-20%（2回合）。',
-       fx:[{k:'dmg',mult:1.5,scope:'enemy'},{k:'debuffAtk',pct:0.20,turns:2,scope:'enemy'}]},
+      {key:'s1', name:'毒液喷射', cost:2, target:'enemy', desc:'1.3倍伤害，目标攻击-20%（2回合）。',
+       fx:[{k:'dmg',mult:1.3,scope:'enemy'},{k:'debuffAtk',pct:0.20,turns:2,scope:'enemy'}]},
       {key:'s2', name:'毒雾弥漫', cost:3, target:'allEnemy', desc:'全体0.85倍伤害，目标防御-15%（2回合）。',
        fx:[{k:'dmg',mult:0.85,scope:'allEnemy'},{k:'debuffDef',pct:0.15,turns:2,scope:'allEnemy'}]}
     ],
-    {name:'万毒噬心', target:'enemy', desc:'单体2.9倍剧毒伤害。',
-     fx:[{k:'dmg',mult:2.9,scope:'enemy'}]}),
+    {name:'万毒噬心', target:'enemy', desc:'单体3.0倍剧毒伤害。',
+     fx:[{k:'dmg',mult:3.0,scope:'enemy'}]}),
 
   H('beast_ghost','幽魂收割者','亡灵刺客','assassin','elec',{hp:700,atk:160,def:35,matk:65,mdef:50},
-    {type:'skillChargeExtra', name:'灵魂汲取', desc:'释放技能时额外+2充能'},
+    {type:'skillChargeExtra', name:'灵魂汲取', desc:'释放技能时额外+1充能'},
     '魂刺', [
-      {key:'s1', name:'幽魂突袭', cost:2, target:'enemy', desc:'2.0倍伤害，自身获得80护盾。',
-       fx:[{k:'dmg',mult:2.0,scope:'enemy'},{k:'shield',v:80,scope:'self'}]},
-      {key:'s2', name:'灵魂撕裂', cost:3, target:'enemy', desc:'2.3倍伤害，目标充能-2。',
-       fx:[{k:'dmg',mult:2.3,scope:'enemy'}]}
+      {key:'s1', name:'幽魂突袭', cost:2, target:'enemy', desc:'1.5倍伤害，自身获得50护盾。',
+       fx:[{k:'dmg',mult:1.5,scope:'enemy'},{k:'shield',v:50,scope:'self'}]},
+      {key:'s2', name:'灵魂撕裂', cost:3, target:'enemy', desc:'2.1倍伤害，目标充能-1。',
+       fx:[{k:'dmg',mult:2.1,scope:'enemy'},{k:'energy',amt:-1,scope:'enemy'}]}
     ],
-    {name:'亡灵大军', target:'allEnemy', desc:'全体1.4倍伤害，自身攻击+25%（2回合）。',
-     fx:[{k:'dmg',mult:1.4,scope:'allEnemy'},{k:'buffAtk',pct:0.25,turns:2,scope:'self'}]}),
+    {name:'亡灵大军', target:'allEnemy', desc:'全体1.25倍伤害，自身攻击+20%（2回合）。',
+     fx:[{k:'dmg',mult:1.25,scope:'allEnemy'},{k:'buffAtk',pct:0.20,turns:2,scope:'self'}]}),
 
   H('beast_dragon','幼龙','远古幼龙','mage','fire',{hp:880,atk:70,def:50,matk:175,mdef:55},
-    {type:'warCryMatk', name:'龙威', desc:'每次释放技能后魔攻+8%（最多3层）'},
+    {type:'warCryMatk', name:'龙威', desc:'每次释放技能后魔攻+8%（最多3层）', ratio:0.08, maxLayers:3},
     '龙息', [
-      {key:'s1', name:'火焰吐息', cost:2, target:'allEnemy', desc:'全体0.95倍魔攻伤害。',
-       fx:[{k:'dmg',mult:0.95,scope:'allEnemy'}]},
-      {key:'s2', name:'龙爪撕裂', cost:3, target:'enemy', desc:'2.5倍伤害，目标法抗-20%（2回合）。',
-       fx:[{k:'dmg',mult:2.5,scope:'enemy'},{k:'debuffMdef',pct:0.20,turns:2,scope:'enemy'}]}
+      {key:'s1', name:'火焰吐息', cost:2, target:'allEnemy', desc:'全体0.8倍魔攻伤害。',
+       fx:[{k:'dmg',mult:0.8,scope:'allEnemy'}]},
+      {key:'s2', name:'龙爪撕裂', cost:3, target:'enemy', desc:'2.2倍伤害，目标法抗-15%（2回合）。',
+       fx:[{k:'dmg',mult:2.2,scope:'enemy'},{k:'debuffMdef',pct:0.15,turns:2,scope:'enemy'}]}
     ],
-    {name:'远古龙炎', target:'allEnemy', desc:'全体1.8倍火焰伤害，自身魔攻+20%（2回合）。',
-     fx:[{k:'dmg',mult:1.8,scope:'allEnemy'},{k:'buffMatk',pct:0.20,turns:2,scope:'self'}]}),
+    {name:'远古龙炎', target:'allEnemy', desc:'全体1.6倍火焰伤害，自身魔攻+15%（2回合）。',
+     fx:[{k:'dmg',mult:1.6,scope:'allEnemy'},{k:'buffMatk',pct:0.15,turns:2,scope:'self'}]}),
 
   H('beast_golem','魔像','符文魔像','tank','elec',{hp:1300,atk:110,def:92,matk:65,mdef:88},
-    {type:'stoneSkin', name:'符文护甲', desc:'己方每阶段首次受到伤害-40%', ratio:0.40},
+    {type:'ultDefBuff', name:'符文护甲', desc:'释放大招后防御+30%，持续3回合', pct:0.30, turns:3},
     '铁拳', [
-      {key:'s1', name:'雷电重拳', cost:2, target:'enemy', desc:'1.5倍雷电伤害，目标防御-20%（2回合）。',
-       fx:[{k:'dmg',mult:1.5,scope:'enemy'},{k:'debuffDef',pct:0.20,turns:2,scope:'enemy'}]},
-      {key:'s2', name:'符文爆发', cost:3, target:'allEnemy', desc:'全体1.0倍雷电伤害。',
-       fx:[{k:'dmg',mult:1.0,scope:'allEnemy'}]}
+      {key:'s1', name:'雷电重拳', cost:2, target:'enemy', desc:'1.5倍雷电伤害，目标防御-15%（2回合）。',
+       fx:[{k:'dmg',mult:1.5,scope:'enemy'},{k:'debuffDef',pct:0.15,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'符文爆发', cost:3, target:'allEnemy', desc:'全体1.2倍雷电伤害。',
+       fx:[{k:'dmg',mult:1.2,scope:'allEnemy'}]}
     ],
-    {name:'魔像审判', target:'allEnemy', desc:'全体1.65倍伤害，自身获得200护盾。',
-     fx:[{k:'dmg',mult:1.65,scope:'allEnemy'},{k:'shield',v:200,scope:'self'}]}),
-  /* ===== 新增16敌人 ===== */
+    {name:'魔像审判', target:'allEnemy', desc:'全体1.55倍伤害，自身获得60护盾。',
+     fx:[{k:'dmg',mult:1.55,scope:'allEnemy'},{k:'shield',v:60,scope:'self'}]}),
+
   H('beast_lava','熔岩巨人','炼狱守护者','warrior','fire',{hp:980,atk:138,def:68,matk:62,mdef:55},
-    {type:'warCry', name:'熔岩暴怒', desc:'每次释放技能后攻击+6%（最多3层）', ratio:0.06},
+    {type:'healMissingOnSkill', name:'熔岩暴怒', desc:'释放技能后回复10%已损生命', ratio:0.10},
     '熔岩拳', [
-      {key:'s1', name:'岩浆冲击', cost:2, target:'enemy', desc:'1.75倍攻击火焰伤害，目标防御-15%（2回合）。',
-       fx:[{k:'dmg',mult:1.75,scope:'enemy'},{k:'debuffDef',pct:0.15,turns:2,scope:'enemy'}]},
+      {key:'s1', name:'岩浆冲击', cost:2, target:'enemy', desc:'1.6倍攻击火焰伤害，目标防御-10%（2回合）。',
+       fx:[{k:'dmg',mult:1.6,scope:'enemy'},{k:'debuffDef',pct:0.10,turns:2,scope:'enemy'}]},
       {key:'s2', name:'烈焰喷发', cost:3, target:'allEnemy', desc:'全体1.0倍火焰伤害，自身攻击+15%（2回合）。',
        fx:[{k:'dmg',mult:1.0,scope:'allEnemy'},{k:'buffAtk',pct:0.15,turns:2,scope:'self'}]}
     ],
-    {name:'地狱熔岩', target:'allEnemy', desc:'全体1.55倍火焰伤害，自身获得160护盾。',
-     fx:[{k:'dmg',mult:1.55,scope:'allEnemy'},{k:'shield',v:160,scope:'self'}]}),
+    {name:'地狱熔岩', target:'allEnemy', desc:'全体1.3倍火焰伤害，自身获得200护盾。',
+     fx:[{k:'dmg',mult:1.3,scope:'allEnemy'},{k:'shield',v:200,scope:'self'}]}),
 
   H('beast_inferno','炎狱魔女','深渊女巫','mage','fire',{hp:780,atk:58,def:40,matk:162,mdef:58},
     {type:'skillSP', name:'地狱契约', desc:'每次释放技能后全队+1支援点'},
     '地狱火', [
-      {key:'s1', name:'冥火弹', cost:2, target:'enemy', desc:'1.7倍魔攻伤害，目标法抗-18%（2回合）。',
-       fx:[{k:'dmg',mult:1.7,scope:'enemy'},{k:'debuffMdef',pct:0.18,turns:2,scope:'enemy'}]},
-      {key:'s2', name:'火焰风暴', cost:3, target:'allEnemy', desc:'全体0.9倍魔攻伤害，30%概率灼烧（持续掉血）。',
-       fx:[{k:'dmg',mult:0.9,scope:'allEnemy'}]}
+      {key:'s1', name:'冥火弹', cost:2, target:'enemy', desc:'1.45倍魔攻伤害，目标法抗-15%（2回合）。',
+       fx:[{k:'dmg',mult:1.45,scope:'enemy'},{k:'debuffMdef',pct:0.15,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'火焰风暴', cost:3, target:'allEnemy', desc:'全体0.9倍魔攻伤害，30%概率灼烧（回合开始时受到0.5倍魔攻伤害，持续两回合）。',
+       fx:[{k:'dmg',mult:0.9,scope:'allEnemy'},{k:'dot',mult:0.5,turns:2,chance:0.30,scope:'allEnemy'}]}
     ],
-    {name:'炼狱审判', target:'allEnemy', desc:'全体1.7倍魔法伤害，自身魔攻+18%（2回合）。',
-     fx:[{k:'dmg',mult:1.7,scope:'allEnemy'},{k:'buffMatk',pct:0.18,turns:2,scope:'self'}]}),
+    {name:'炼狱审判', target:'allEnemy', desc:'全体1.5倍魔法伤害，自身魔攻+15%（2回合）。',
+     fx:[{k:'dmg',mult:1.5,scope:'allEnemy'},{k:'buffMatk',pct:0.15,turns:2,scope:'self'}]}),
 
   H('beast_flameghost','火焰幽灵','炽焰幽魂','assassin','fire',{hp:700,atk:168,def:35,matk:55,mdef:38},
-    {type:'slay', name:'魂火收割', desc:'对生命低于35%的目标伤害+35%', threshold:0.35, bonus:0.35},
+    {type:'slay', name:'魂火收割', desc:'对生命低于40%的目标伤害+30%', threshold:0.40, bonus:0.30},
     '魂火刺', [
-      {key:'s1', name:'幽灵突袭', cost:2, target:'enemy', desc:'2.0倍攻击伤害，自身充能+1。',
-       fx:[{k:'dmg',mult:2.0,scope:'enemy'},{k:'energy',amt:1,scope:'self'}]},
-      {key:'s2', name:'焚魂', cost:3, target:'enemy', desc:'2.4倍攻击伤害，目标治疗效果-30%（2回合）。',
-       fx:[{k:'dmg',mult:2.4,scope:'enemy'}]}
+      {key:'s1', name:'幽灵突袭', cost:2, target:'enemy', desc:'1.6 倍攻击伤害，自身充能+1。',
+       fx:[{k:'dmg',mult:1.6,scope:'enemy'},{k:'energy',amt:1,scope:'self'}]},
+      {key:'s2', name:'焚魂', cost:3, target:'enemy', desc:'2.2 倍攻击伤害，目标治疗效果-30%（2回合）。',
+       fx:[{k:'dmg',mult:2.2,scope:'enemy'},{k:'debuffHeal',pct:0.30,turns:2,scope:'enemy'}]}
     ],
-    {name:'万魂焚天', target:'allEnemy', desc:'全体1.35倍攻击伤害，对低血量目标额外+50%。',
-     fx:[{k:'dmg',mult:1.35,scope:'allEnemy'}]}),
+    {name:'万魂焚天', target:'allEnemy', desc:'全体1.35倍攻击伤害，对生命低于40%的目标额外造成一次0.6倍攻击伤害。',
+     fx:[{k:'dmg',mult:1.35,scope:'allEnemy',lowHpExtraHit:0.40,lowHpExtraHitMult:0.6}]}),
 
   H('beast_moss','苔藓巨兽','远古苔兽','tank','grass',{hp:1380,atk:95,def:96,matk:75,mdef:92},
-    {type:'regen', name:'苔藓再生', desc:'己方行动阶段开始时恢复6%最大生命', ratio:0.06},
+    {type:'regen', name:'苔藓再生', desc:'己方行动阶段开始时自身恢复6%最大生命', ratio:0.06},
     '苔击', [
-      {key:'s1', name:'藤蔓抽打', cost:2, target:'enemy', desc:'1.1倍伤害，目标攻击-18%（2回合）。',
-       fx:[{k:'dmg',mult:1.1,scope:'enemy'},{k:'debuffAtk',pct:0.18,turns:2,scope:'enemy'}]},
-      {key:'s2', name:'自然治愈', cost:3, target:'allAlly', desc:'全体友军恢复0.9倍攻击生命。',
-       fx:[{k:'heal',mult:0.9,scope:'allAlly'}]}
+      {key:'s1', name:'藤蔓抽打', cost:2, target:'enemy', desc:'1.5 倍伤害，目标攻击-15%（2回合）。',
+       fx:[{k:'dmg',mult:1.5,scope:'enemy'},{k:'debuffAtk',pct:0.15,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'自然治愈', cost:3, target:'allAlly', desc:'全体友军恢复 0.6 倍攻击生命。',
+       fx:[{k:'heal',mult:0.6,scope:'allAlly'}]}
     ],
-    {name:'苔原守护', target:'allAlly', desc:'全体友军获得160护盾，恢复0.6倍攻击生命。',
-     fx:[{k:'shield',v:160,scope:'allAlly'},{k:'heal',mult:0.6,scope:'allAlly'}]}),
+    {name:'苔原守护', target:'allAlly', desc:'全体友军获得120护盾，恢复0.6倍攻击生命。',
+     fx:[{k:'shield',v:120,scope:'allAlly'},{k:'heal',mult:0.6,scope:'allAlly'}]}),
 
   H('beast_flora','花灵祭司','花语者','support','grass',{hp:820,atk:55,def:44,matk:142,mdef:75},
-    {type:'healLowStart', name:'花之祝福', desc:'己方阶段开始时治疗最低血量友军0.9倍魔攻', mult:0.9},
+    {type:'healLowStart', name:'花之祝福', desc:'己方阶段开始时治疗最低血量友军0.5倍魔攻', mult:0.5},
     '花粉', [
-      {key:'s1', name:'治愈花粉', cost:2, target:'ally', desc:'治疗友军2.2倍魔攻生命，目标防御+15%（2回合）。',
-       fx:[{k:'heal',mult:2.2,scope:'ally'},{k:'buffDef',pct:0.15,turns:2,scope:'ally'}]},
-      {key:'s2', name:'藤蔓束缚', cost:3, target:'enemy', desc:'0.85倍魔攻伤害，目标攻击-22%（2回合）。',
-       fx:[{k:'dmg',mult:0.85,scope:'enemy'},{k:'debuffAtk',pct:0.22,turns:2,scope:'enemy'}]}
+      {key:'s1', name:'治愈花粉', cost:2, target:'ally', desc:'治疗友军1.5倍魔攻生命，目标防御+15%（2回合）。',
+       fx:[{k:'heal',mult:1.5,scope:'ally'},{k:'buffDef',pct:0.15,turns:2,scope:'ally'}]},
+      {key:'s2', name:'花藤缠绕', cost:3, target:'enemy', desc:'0.8 倍魔攻伤害，目标攻击-20%（2回合）。',
+       fx:[{k:'dmg',mult:0.8,scope:'enemy'},{k:'debuffAtk',pct:0.20,turns:2,scope:'enemy'}]}
     ],
     {name:'生命绽放', target:'allAlly', desc:'全体友军恢复1.4倍魔攻生命，充能+1。',
      fx:[{k:'heal',mult:1.4,scope:'allAlly'},{k:'energy',amt:1,scope:'allAlly'}]}),
 
   H('beast_thorn','荆棘战士','刺甲勇士','warrior','grass',{hp:950,atk:132,def:72,matk:60,mdef:65},
-    {type:'thorn', name:'反刺护甲', desc:'受到伤害时反弹22%给攻击者', ratio:0.22},
+    {type:'thorn', name:'反刺护甲', desc:'受到伤害时反弹25%给攻击者', ratio:0.25},
     '刺击', [
-      {key:'s1', name:'荆棘突刺', cost:2, target:'enemy', desc:'1.65倍攻击伤害，目标防御-18%（2回合）。',
-       fx:[{k:'dmg',mult:1.65,scope:'enemy'},{k:'debuffDef',pct:0.18,turns:2,scope:'enemy'}]},
-      {key:'s2', name:'刺甲爆发', cost:3, target:'enemy', desc:'1.9倍攻击伤害，自身获得140护盾。',
-       fx:[{k:'dmg',mult:1.9,scope:'enemy'},{k:'shield',v:140,scope:'self'}]}
+      {key:'s1', name:'荆棘突刺', cost:2, target:'enemy', desc:'1.6 倍攻击伤害，目标防御-10%（2回合）。',
+       fx:[{k:'dmg',mult:1.6,scope:'enemy'},{k:'debuffDef',pct:0.10,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'刺甲爆发', cost:3, target:'enemy', desc:'1.7 倍攻击伤害，自身获得100护盾。',
+       fx:[{k:'dmg',mult:1.7,scope:'enemy'},{k:'shield',v:100,scope:'self'}]}
     ],
-    {name:'万刺穿心', target:'allEnemy', desc:'全体1.3倍攻击伤害，目标防御-12%（2回合）。',
-     fx:[{k:'dmg',mult:1.3,scope:'allEnemy'},{k:'debuffDef',pct:0.12,turns:2,scope:'allEnemy'}]}),
+    {name:'万刺穿心', target:'allEnemy', desc:'全体1.4倍攻击伤害，目标防御-10%（2回合）。',
+     fx:[{k:'dmg',mult:1.4,scope:'allEnemy'},{k:'debuffDef',pct:0.10,turns:2,scope:'allEnemy'}]}),
 
   H('beast_abyss','深海巫师','深渊咒术师','mage','water',{hp:790,atk:56,def:42,matk:160,mdef:62},
     {type:'skillChargeExtra', name:'深渊汲取', desc:'释放技能时额外+1充能'},
     '深渊弹', [
-      {key:'s1', name:'寒冰箭', cost:2, target:'enemy', desc:'1.75倍魔攻伤害，目标法抗-15%（2回合）。',
-       fx:[{k:'dmg',mult:1.75,scope:'enemy'},{k:'debuffMdef',pct:0.15,turns:2,scope:'enemy'}]},
-      {key:'s2', name:'海啸', cost:3, target:'allEnemy', desc:'全体0.95倍魔攻伤害，目标攻击-12%（2回合）。',
-       fx:[{k:'dmg',mult:0.95,scope:'allEnemy'},{k:'debuffAtk',pct:0.12,turns:2,scope:'allEnemy'}]}
+      {key:'s1', name:'寒冰箭', cost:2, target:'enemy', desc:'1.5倍魔攻伤害，目标法抗-15%（2回合）。',
+       fx:[{k:'dmg',mult:1.5,scope:'enemy'},{k:'debuffMdef',pct:0.15,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'深渊海啸', cost:3, target:'allEnemy', desc:'全体 0.9倍魔攻伤害，目标攻击-10%（2回合）。',
+       fx:[{k:'dmg',mult:0.9,scope:'allEnemy'},{k:'debuffAtk',pct:0.10,turns:2,scope:'allEnemy'}]}
     ],
-    {name:'深渊漩涡', target:'allEnemy', desc:'全体1.6倍魔法伤害，自身魔攻+15%（2回合）。',
-     fx:[{k:'dmg',mult:1.6,scope:'allEnemy'},{k:'buffMatk',pct:0.15,turns:2,scope:'self'}]}),
+    {name:'深渊漩涡', target:'allEnemy', desc:'全体1.55倍魔法伤害，自身魔攻+10%（2回合）。',
+     fx:[{k:'dmg',mult:1.55,scope:'allEnemy'},{k:'buffMatk',pct:0.10,turns:2,scope:'self'}]}),
 
   H('beast_tide','潮汐猎手','深海刺客','assassin','water',{hp:730,atk:162,def:38,matk:52,mdef:40},
     {type:'siphon', name:'潮汐汲取', desc:'造成伤害的20%转化为治疗', ratio:0.20},
     '水刃', [
-      {key:'s1', name:'激流斩', cost:2, target:'enemy', desc:'1.9倍攻击伤害，自身恢复0.5倍攻击生命。',
-       fx:[{k:'dmg',mult:1.9,scope:'enemy'},{k:'heal',mult:0.5,scope:'self'}]},
-      {key:'s2', name:'深海刺杀', cost:3, target:'enemy', desc:'2.35倍攻击伤害，无视25%防御。',
-       fx:[{k:'dmg',mult:2.35,scope:'enemy'}]}
+      {key:'s1', name:'激流斩', cost:2, target:'enemy', desc:'1.5倍攻击伤害，自身恢复0.4倍攻击生命。',
+       fx:[{k:'dmg',mult:1.5,scope:'enemy'},{k:'heal',mult:0.4,scope:'self'}]},
+      {key:'s2', name:'深海刺杀', cost:3, target:'enemy', desc:'2.1 倍攻击伤害，无视25%防御。',
+       fx:[{k:'dmg',mult:2.1,ignoreDef:0.25,scope:'enemy'}]}
     ],
-    {name:'潮汐风暴', target:'allEnemy', desc:'全体1.3倍攻击伤害，自身获得100护盾。',
-     fx:[{k:'dmg',mult:1.3,scope:'allEnemy'},{k:'shield',v:100,scope:'self'}]}),
+    {name:'潮汐风暴', target:'allEnemy', desc:'全体1.4 倍攻击伤害，自身获得100护盾。',
+     fx:[{k:'dmg',mult:1.4,scope:'allEnemy'},{k:'shield',v:100,scope:'self'}]}),
 
-  H('beast_coral','珊瑚守卫','深海壁垒','tank','water',{hp:1320,atk:92,def:94,matk:68,mdef:95},
-    {type:'stoneSkin', name:'珊瑚护甲', desc:'己方每阶段首次受到伤害-32%', ratio:0.32},
+  H('beast_coral','珊瑚守卫','深海壁垒','tank','water',{hp:1320,atk:92,def:90,matk:68,mdef:100},
+    {type:'stoneSkin', name:'珊瑚护甲', desc:'己方每阶段首次受到伤害-25%', ratio:0.25},
     '珊瑚击', [
-      {key:'s1', name:'海浪冲击', cost:2, target:'allEnemy', desc:'全体0.85倍伤害，目标攻击-15%（2回合）。',
-       fx:[{k:'dmg',mult:0.85,scope:'allEnemy'},{k:'debuffAtk',pct:0.15,turns:2,scope:'allEnemy'}]},
+      {key:'s1', name:'海浪冲击', cost:2, target:'allEnemy', desc:'全体0.65倍伤害，目标魔攻-10%（2回合）。',
+       fx:[{k:'dmg',mult:0.65,scope:'allEnemy'},{k:'debuffMatk',pct:0.10,turns:2,scope:'allEnemy'}]},
       {key:'s2', name:'珊瑚壁垒', cost:3, target:'allAlly', desc:'全体友军获得170护盾。',
        fx:[{k:'shield',v:170,scope:'allAlly'}]}
     ],
@@ -2413,79 +2414,79 @@ const NEW_BEASTS = [
   H('beast_thunder','雷电先知','风暴预言者','support','elec',{hp:810,atk:58,def:42,matk:138,mdef:65},
     {type:'spStart', name:'雷电感应', desc:'己方阶段开始时额外+1支援点'},
     '电弧', [
-      {key:'s1', name:'雷电祝福', cost:2, target:'ally', desc:'友军魔攻+22%（2回合），充能+1。',
-       fx:[{k:'buffMatk',pct:0.22,turns:2,scope:'ally'},{k:'energy',amt:1,scope:'ally'}]},
-      {key:'s2', name:'连锁闪电', cost:3, target:'allEnemy', desc:'全体0.85倍魔攻伤害，目标法抗-12%（2回合）。',
-       fx:[{k:'dmg',mult:0.85,scope:'allEnemy'},{k:'debuffMdef',pct:0.12,turns:2,scope:'allEnemy'}]}
+      {key:'s1', name:'雷电祝福', cost:2, target:'ally', desc:'友军魔攻+25%（2回合），充能+1。',
+       fx:[{k:'buffMatk',pct:0.25,turns:2,scope:'ally'},{k:'energy',amt:1,scope:'ally'}]},
+      {key:'s2', name:'连锁闪电', cost:3, target:'allEnemy', desc:'全体0.95倍魔攻伤害，目标法抗-10%（2回合）。',
+       fx:[{k:'dmg',mult:0.95,scope:'allEnemy'},{k:'debuffMdef',pct:0.10,turns:2,scope:'allEnemy'}]}
     ],
-    {name:'天雷启示', target:'allAlly', desc:'全体友军充能+2，获得100护盾。',
-     fx:[{k:'energy',amt:2,scope:'allAlly'},{k:'shield',v:100,scope:'allAlly'}]}),
+    {name:'天雷启示', target:'allAlly', desc:'全体友军充能+2，获得120护盾。',
+     fx:[{k:'energy',amt:2,scope:'allAlly'},{k:'shield',v:120,scope:'allAlly'}]}),
 
   H('beast_bolt','闪电勇士','雷霆战士','warrior','elec',{hp:930,atk:142,def:58,matk:55,mdef:50},
     {type:'attackChargeExtra', name:'雷电迅捷', desc:'普攻额外+1充能', extra:1},
     '雷斩', [
-      {key:'s1', name:'闪电突刺', cost:2, target:'enemy', desc:'1.8倍雷电伤害，30%概率连击。',
-       fx:[{k:'dmg',mult:1.8,scope:'enemy'}]},
-      {key:'s2', name:'雷鸣斩', cost:3, target:'enemy', desc:'2.15倍伤害，目标防御-18%（2回合）。',
-       fx:[{k:'dmg',mult:2.15,scope:'enemy'},{k:'debuffDef',pct:0.18,turns:2,scope:'enemy'}]}
+      {key:'s1', name:'雷霆突刺', cost:2, target:'enemy', desc:'1.7倍雷电伤害。',
+       fx:[{k:'dmg',mult:1.7,scope:'enemy'}]},
+      {key:'s2', name:'雷霆斩', cost:3, target:'enemy', desc:'2.0倍伤害，目标防御-15%（2回合）。',
+       fx:[{k:'dmg',mult:2.0,scope:'enemy'},{k:'debuffDef',pct:0.15,turns:2,scope:'enemy'}]}
     ],
-    {name:'九天雷霆', target:'allEnemy', desc:'全体1.45倍雷电伤害，自身充能+2。',
-     fx:[{k:'dmg',mult:1.45,scope:'allEnemy'},{k:'energy',amt:2,scope:'self'}]}),
+    {name:'雷霆万钧', target:'allEnemy', desc:'全体1.55倍雷电伤害。',
+     fx:[{k:'dmg',mult:1.55,scope:'allEnemy'}]}),
 
   H('beast_storm','风暴术士','狂风法师','mage','wind',{hp:770,atk:54,def:40,matk:158,mdef:58},
     {type:'idleChargeExtra', name:'风之凝聚', desc:'待机时额外+2充能', extra:2},
     '风刃', [
-      {key:'s1', name:'暴风斩', cost:2, target:'allEnemy', desc:'全体0.85倍魔攻伤害，目标防御-12%（2回合）。',
-       fx:[{k:'dmg',mult:0.85,scope:'allEnemy'},{k:'debuffDef',pct:0.12,turns:2,scope:'allEnemy'}]},
+      {key:'s1', name:'暴风斩', cost:2, target:'allEnemy', desc:'全体0.75倍魔攻伤害，目标防御-10%（2回合）。',
+       fx:[{k:'dmg',mult:0.75,scope:'allEnemy'},{k:'debuffDef',pct:0.10,turns:2,scope:'allEnemy'}]},
       {key:'s2', name:'风刃穿刺', cost:3, target:'enemy', desc:'2.3倍魔攻伤害。',
        fx:[{k:'dmg',mult:2.3,scope:'enemy'}]}
     ],
-    {name:'风暴之怒', target:'allEnemy', desc:'全体1.55倍伤害，目标速度-15%（2回合）。',
-     fx:[{k:'dmg',mult:1.55,scope:'allEnemy'}]}),
+    {name:'风暴之怒', target:'allEnemy', desc:'全体1.5倍伤害。',
+     fx:[{k:'dmg',mult:1.5,scope:'allEnemy'}]}),
 
   H('beast_hurricane','飓风巨像','风暴守护者','tank','wind',{hp:1280,atk:100,def:90,matk:70,mdef:85},
     {type:'counterStun', name:'旋风反击', desc:'受到伤害时25%概率使攻击者眩晕1回合', ratio:0.25},
     '风击', [
-      {key:'s1', name:'飓风冲击', cost:2, target:'enemy', desc:'1.25倍伤害，目标攻击-18%（2回合）。',
-       fx:[{k:'dmg',mult:1.25,scope:'enemy'},{k:'debuffAtk',pct:0.18,turns:2,scope:'enemy'}]},
-      {key:'s2', name:'风之壁垒', cost:3, target:'self', desc:'自身获得2.2倍攻击护盾，全体友军速度+10%（2回合）。',
-       fx:[{k:'shield',mult:2.2,scope:'self'}]}
+      {key:'s1', name:'飓风冲击', cost:2, target:'enemy', desc:'1.3倍伤害，目标攻击-20%（2回合）。',
+       fx:[{k:'dmg',mult:1.3,scope:'enemy'},{k:'debuffAtk',pct:0.20,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'风之壁垒', cost:3, target:'self', desc:'自身获得2.0倍攻击护盾。',
+       fx:[{k:'shield',mult:2.0,scope:'self'}]}
     ],
-    {name:'飓风领域', target:'allEnemy', desc:'全体1.25倍伤害，目标攻击-15%（2回合），自身获得150护盾。',
-     fx:[{k:'dmg',mult:1.25,scope:'allEnemy'},{k:'debuffAtk',pct:0.15,turns:2,scope:'allEnemy'},{k:'shield',v:150,scope:'self'}]}),
+    {name:'飓风领域', target:'allEnemy', desc:'全体1.25倍伤害，目标攻击-10%（2回合），自身获得100护盾。',
+     fx:[{k:'dmg',mult:1.25,scope:'allEnemy'},{k:'debuffAtk',pct:0.10,turns:2,scope:'allEnemy'},{k:'shield',v:100,scope:'self'}]}),
 
   H('beast_rock','岩石潜行者','地穴刺客','assassin','earth',{hp:750,atk:160,def:42,matk:50,mdef:45},
-    {type:'slay', name:'碎石突袭', desc:'对生命低于50%的目标伤害+28%', threshold:0.50, bonus:0.28},
+    {type:'slay', name:'碎石突袭', desc:'对生命低于50%的目标伤害+25%', threshold:0.50, bonus:0.25},
     '岩刺', [
-      {key:'s1', name:'地刺突袭', cost:2, target:'enemy', desc:'1.85倍攻击伤害，目标防御-15%（2回合）。',
-       fx:[{k:'dmg',mult:1.85,scope:'enemy'},{k:'debuffDef',pct:0.15,turns:2,scope:'enemy'}]},
-      {key:'s2', name:'碎岩斩', cost:3, target:'enemy', desc:'2.3倍攻击伤害，无视20%防御。',
-       fx:[{k:'dmg',mult:2.3,scope:'enemy'}]}
+      {key:'s1', name:'地刺突袭', cost:2, target:'enemy', desc:'1.65倍攻击伤害，目标防御-10%（2回合）。',
+       fx:[{k:'dmg',mult:1.65,scope:'enemy'},{k:'debuffDef',pct:0.10,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'碎岩斩', cost:3, target:'enemy', desc:'2.1倍攻击伤害，无视20%防御。',
+       fx:[{k:'dmg',mult:2.1,ignoreDef:0.20,scope:'enemy'}]}
     ],
     {name:'地裂杀阵', target:'allEnemy', desc:'全体1.35倍攻击伤害，目标防御-10%（2回合）。',
      fx:[{k:'dmg',mult:1.35,scope:'allEnemy'},{k:'debuffDef',pct:0.10,turns:2,scope:'allEnemy'}]}),
 
   H('beast_earthpriest','大地祭司','岩石守护者','support','earth',{hp:840,atk:60,def:48,matk:135,mdef:68},
-    {type:'shieldLowStart', name:'大地护佑', desc:'己方阶段开始时为最低血量友军添加0.7倍魔攻护盾', mult:0.7},
+    {type:'shieldLowStart', name:'大地护佑', desc:'己方阶段开始时为最低血量友军添加0.3倍魔攻护盾', mult:0.3},
     '岩弹', [
-      {key:'s1', name:'岩石护盾', cost:2, target:'ally', desc:'友军获得200护盾，防御+15%（2回合）。',
-       fx:[{k:'shield',v:200,scope:'ally'},{k:'buffDef',pct:0.15,turns:2,scope:'ally'}]},
-      {key:'s2', name:'地刺', cost:3, target:'enemy', desc:'1.4倍魔攻伤害，目标法抗-15%（2回合）。',
-       fx:[{k:'dmg',mult:1.4,scope:'enemy'},{k:'debuffMdef',pct:0.15,turns:2,scope:'enemy'}]}
+      {key:'s1', name:'岩石护盾', cost:2, target:'ally', desc:'友军获得180护盾，防御+15%（2回合）。',
+       fx:[{k:'shield',v:180,scope:'ally'},{k:'buffDef',pct:0.15,turns:2,scope:'ally'}]},
+      {key:'s2', name:'岩刺', cost:3, target:'enemy', desc:'2.0倍魔攻伤害，目标法抗-15%（2回合）。',
+       fx:[{k:'dmg',mult:2.0,scope:'enemy'},{k:'debuffMdef',pct:0.15,turns:2,scope:'enemy'}]}
     ],
-    {name:'大地恩赐', target:'allAlly', desc:'全体友军获得150护盾，恢复0.8倍魔攻生命。',
-     fx:[{k:'shield',v:150,scope:'allAlly'},{k:'heal',mult:0.8,scope:'allAlly'}]}),
+    {name:'大地恩赐', target:'allAlly', desc:'全体友军获得150护盾，恢复0.4倍魔攻生命。',
+     fx:[{k:'shield',v:150,scope:'allAlly'},{k:'heal',mult:0.4,scope:'allAlly'}]}),
 
   H('beast_mountain','山脉贤者','岩石法师','mage','earth',{hp:800,atk:56,def:44,matk:155,mdef:60},
-    {type:'warCryMatk', name:'山脉共鸣', desc:'每次释放技能后魔攻+7%（最多3层）'},
+    {type:'warCryMatk', name:'山脉共鸣', desc:'每次释放技能后魔攻+6%（最多3层）', ratio:0.06, maxLayers:3},
     '岩石术', [
-      {key:'s1', name:'落石', cost:2, target:'enemy', desc:'1.65倍魔攻伤害，目标法抗-18%（2回合）。',
-       fx:[{k:'dmg',mult:1.65,scope:'enemy'},{k:'debuffMdef',pct:0.18,turns:2,scope:'enemy'}]},
-      {key:'s2', name:'地震', cost:3, target:'allEnemy', desc:'全体0.92倍魔攻伤害，目标防御-12%（2回合）。',
-       fx:[{k:'dmg',mult:0.92,scope:'allEnemy'},{k:'debuffDef',pct:0.12,turns:2,scope:'allEnemy'}]}
+      {key:'s1', name:'落石', cost:2, target:'enemy', desc:'1.5倍魔攻伤害，目标法抗-15%（2回合）。',
+       fx:[{k:'dmg',mult:1.5,scope:'enemy'},{k:'debuffMdef',pct:0.15,turns:2,scope:'enemy'}]},
+      {key:'s2', name:'地震', cost:3, target:'allEnemy', desc:'全体1.2倍魔攻伤害。',
+       fx:[{k:'dmg',mult:1.2,scope:'allEnemy'}]}
     ],
-    {name:'山崩地裂', target:'allEnemy', desc:'全体1.65倍魔法伤害，自身魔攻+15%（2回合）。',
-     fx:[{k:'dmg',mult:1.65,scope:'allEnemy'},{k:'buffMatk',pct:0.15,turns:2,scope:'self'}]}),
+    {name:'山脉崩裂', target:'allEnemy', desc:'全体1.5倍魔法伤害，自身魔攻+10%（2回合）。',
+     fx:[{k:'dmg',mult:1.5,scope:'allEnemy'},{k:'buffMatk',pct:0.10,turns:2,scope:'self'}]}),
 
 ];
 
@@ -2657,9 +2658,9 @@ const Engine = {
   currentPhaseReady(game){ const units=this.unitsOf(game,game.phaseSide); return units.every(u=>u.acted); },
 
   effectiveAtk(u){ const sum=(u.buffs.filter(b=>b.kind==='atk').reduce((s,b)=>s+b.pct,0)); return u.atk*(1+Math.max(-0.8,sum)+(u.gearAtkPct||0)); },
-  effectiveDef(u){ const sum=u.buffs.filter(b=>b.kind==='def').reduce((s,b)=>s+b.pct,0); return u.def*(1+Math.max(-0.8,sum)); },
-  effectiveMatk(u){ const sum=u.buffs.filter(b=>b.kind==='atk').reduce((s,b)=>s+b.pct,0); return u.matk*(1+Math.max(-0.8,sum)+(u.gearMatkPct||0)); },
-  effectiveMdef(u){ const sum=u.buffs.filter(b=>b.kind==='def').reduce((s,b)=>s+b.pct,0); return u.mdef*(1+Math.max(-0.8,sum)); },
+  effectiveDef(u){ const sum=u.buffs.filter(b=>b.kind==='def').reduce((s,b)=>s+b.pct,0); const flat=u.buffs.filter(b=>b.kind==='defFlat').reduce((s,b)=>s+(b.flat||0),0); return u.def*(1+Math.max(-0.8,sum))+flat; },
+  effectiveMatk(u){ const sum=u.buffs.filter(b=>b.kind==='atk'||b.kind==='matk').reduce((s,b)=>s+b.pct,0); return u.matk*(1+Math.max(-0.8,sum)+(u.gearMatkPct||0)); },
+  effectiveMdef(u){ const sum=u.buffs.filter(b=>b.kind==='def'||b.kind==='mdef').reduce((s,b)=>s+b.pct,0); const flat=u.buffs.filter(b=>b.kind==='mdefFlat').reduce((s,b)=>s+(b.flat||0),0); return u.mdef*(1+Math.max(-0.8,sum))+flat; },
   buffLabel(b){ return (b.kind==='atk'?'攻击':b.kind==='def'?'防御':'') + (b.pct>=0?'+':'') + Math.round(b.pct*100) + '%'; },
   magicKindFor(unit, fx){ return !!(fx && fx.mag) || unit.role==='mage' || unit.role==='support'; },
   healPower(unit){ return (unit.role==='mage'||unit.role==='support') ? this.effectiveMatk(unit) : this.effectiveAtk(unit); },
@@ -2712,7 +2713,7 @@ const Engine = {
     for(const u of units){
       const p=u.passive; if(!p||!p.type) continue;
       if(evt==='phaseStart' && ctx.sideKey===u.side){
-        if(p.type==='spStart'){ this.addSP(game,u.side,1,'潮汐共鸣'); }
+        if(p.type==='spStart'){ this.addSP(game,u.side,1,p.name); if(p.bonusChance && Math.random()<p.bonusChance){ this.addSP(game,u.side,1,p.name+'（额外）'); } }
         else if(p.type==='energyAllyStart'){
           for(const a of this.unitsOf(game,u.side)){ if(a.alive){ this.gainEnergy(game,a,1); } }
           this.log(game,'info',u.side+'-phase',`${u.name}【${p.name}】全体友军充能 +1`);
@@ -2728,7 +2729,7 @@ const Engine = {
           const allies=this.unitsOf(game,u.side).filter(a=>a.alive&&a.hp<a.maxHp);
           if(allies.length){
             const t=allies.sort((a,b)=>(a.hp/a.maxHp)-(b.hp/b.maxHp))[0];
-            const amt=this.calcHeal(u,0.8,game);
+            const amt=this.calcHeal(u,p.mult||0.8,game);
             this.applyHeal(game,u,t,amt,p.name);
           }
         }
@@ -2748,21 +2749,37 @@ const Engine = {
             game.events.push({type:'shield', side:t.side, unitId:t.id, amount:shieldAmt});
           }
         }
+        else if(p.type==='idleChargeSP'){
+          // 冰霜女巫：待机时+1充能+1支援点
+          this.gainEnergy(game,u,p.extra||1);
+          this.addSP(game,u.side,1,p.name);
+        }
+      }
+      // DoT 持续伤害处理
+      const dotBuffs=u.buffs.filter(b=>b.kind==='dot');
+      for(const db of dotBuffs){
+        if(u.alive){
+          const dotRes=this.applyDamage(game,null,u,db.dmg,{pure:true,direct:false,noReflect:true});
+          this.log(game,'dmg',u.side+'-dot',`${u.name} 受到持续伤害 ${dotRes.dmg}（${db.src}）`);
+          game.events.push({type:'dmg',unitId:u.id,amount:dotRes.dmg,tag:db.src});
+        }
       }
     }
     if(evt==='afterSkill'){
       const u=ctx.unit;
       if(u.passive.type==='warCry'){
         const st=u.passiveState; st.warCry=(st.warCry||0)+1;
-        if(st.warCry<=4){
-          u.buffs.push({kind:'atk',pct:.05,left:9999,src:'战意',perm:true});
-          this.log(game,'buff','blue-war',`${u.name}【战意】攻击 +5%（第 ${st.warCry} 层）`);
+        const wcRatio=u.passive.ratio||0.05, wcMax=u.passive.maxLayers||4;
+        if(st.warCry<=wcMax){
+          u.buffs.push({kind:'atk',pct:wcRatio,left:9999,src:u.passive.name,perm:true});
+          this.log(game,'buff','blue-war',`${u.name}【${u.passive.name}】攻击 +${Math.round(wcRatio*100)}%（第 ${st.warCry} 层）`);
         }
       } else if(u.passive.type==='warCryMatk'){
         const st=u.passiveState; st.warCryMatk=(st.warCryMatk||0)+1;
-        if(st.warCryMatk<=3){
-          u.buffs.push({kind:'matk',pct:.08,left:9999,src:'龙威',perm:true});
-          this.log(game,'buff','blue-war',`${u.name}【龙威】魔攻 +8%（第 ${st.warCryMatk} 层）`);
+        const wmRatio=u.passive.ratio||0.08, wmMax=u.passive.maxLayers||3;
+        if(st.warCryMatk<=wmMax){
+          u.buffs.push({kind:'matk',pct:wmRatio,left:9999,src:u.passive.name,perm:true});
+          this.log(game,'buff','blue-war',`${u.name}【${u.passive.name}】魔攻 +${Math.round(wmRatio*100)}%（第 ${st.warCryMatk} 层）`);
         }
       } else if(u.passive.type==='skillSP'){
         this.addSP(game,u.side,1,u.passive.name);
@@ -2771,24 +2788,34 @@ const Engine = {
           this.addSP(game,u.side,1,u.passive.name);
           this.log(game,'info',u.side+'-sp',`${u.name}【${u.passive.name}】触发！全队 +1 支援点`);
         }
-      } else if(u.passive.type==='skillChargeExtra'){
-        this.gainEnergy(game,u,1);
-      } else if(u.passive.type==='comboGrowth'){
-        // 连击增长：技能命中后叠加伤害增益
-        const st=u.passiveState; st.comboStacks=Math.min(3,(st.comboStacks||0)+1);
-        u.buffs.push({kind:'atk',pct:u.passive.ratio||0.10,left:4,src:'连击精通',perm:false});
-        this.log(game,'buff',u.side+'-buff',`${u.name}【连击精通】攻击+${Math.round((u.passive.ratio||0.10)*100)}%（第${st.comboStacks}层）`);
-      } else if(u.passive.type==='overcharge'){
-        // 过载：释放技能后额外+1充能
-        this.gainEnergy(game,u,1);
-      } else if(u.passive.type==='tailwind'){
-        // 顺风：20%概率返还1点支援点
-        if(Math.random() < (u.passive.ratio||0.20)){
-          this.addSP(game,u.side,1,u.passive.name);
-          this.log(game,'info',u.side+'-sp',`${u.name}【顺风】触发！返还1点支援点`);
+      }
+      // 熔岩巨人：释放技能后回复10%已损生命
+      if(u.passive.type==='healMissingOnSkill' && u.alive){
+        const missing=u.maxHp-u.hp;
+        if(missing>0){
+          const healAmt=Math.max(1,Math.round(missing*(u.passive.ratio||0.10)));
+          this.applyHeal(game,u,u,healAmt,u.passive.name);
         }
       }
-    }
+      // 暗影领主：释放大招后全队+2支援点
+      if(u.passive.type==='skillSP' && u.passive.ultSPBonus && ctx.isUlt){
+        this.addSP(game,u.side,u.passive.ultSPBonus,u.passive.name+'（大招）');
+      }
+      // 魔像：释放大招后防御+30%
+      if(u.passive.type==='ultDefBuff' && ctx.isUlt && u.alive){
+        this.addBuff(game,u,'def',u.passive.pct||0.30,u.passive.turns||3,u.passive.name);
+      } else if(u.passive.type==='skillChargeExtra'){
+        this.gainEnergy(game,u,1);
+      } else if(u.passive.type==='overcharge'){
+        // 过载：充能低于50%时获得1点充能
+        const need=u.ultNeed||ULT_THRESHOLD;
+        if(u.energy < need*0.5){
+          this.gainEnergy(game,u,1);
+          this.log(game,'info',u.side+'-energy',`${u.name}【过载】充能低于50%，获得1点充能`);
+        }
+        }
+      }
+
   },
 
   log(game, type, key, text){
@@ -2798,7 +2825,12 @@ const Engine = {
 
   addSP(game, side, amount, source){
     const before=game.sides[side].sp;
-    game.sides[side].sp=Math.max(0,Math.min(MAX_SP,before+amount));
+    const canOverflow = this.unitsOf(game,side).some(x=>x.alive && x.passive && x.passive.type==='tailwind' && x.passive.overflow);
+    if(canOverflow){
+      game.sides[side].sp=Math.max(0,before+amount);
+    } else {
+      game.sides[side].sp=Math.max(0,Math.min(MAX_SP,before+amount));
+    }
     const real=game.sides[side].sp-before;
     if(real!==0 && source) this.log(game,'sp',side+'-sp',`支援点 ${real>0?'+':''}${real}（${source}）`);
   },
@@ -2821,26 +2853,43 @@ const Engine = {
     return {dmg, heal};
   },
 
-  calcDamage(att,def,target,mult,extraMult,magic,game){
+  calcDamage(att,def,target,mult,extraMult,magic,game,ignoreDef,ignoreMdef){
     const power = magic ? this.effectiveMatk(att) : this.effectiveAtk(att);
     const resist = magic ? this.effectiveMdef(def) : this.effectiveDef(def);
-    let raw=mult*power*(100/(100+resist*0.9));
+    let effectiveResist = resist;
+    if(ignoreDef && !magic) effectiveResist *= (1 - ignoreDef);
+    if(ignoreMdef && magic) effectiveResist *= (1 - ignoreMdef);
+    // 新公式：实际伤害=（倍率*攻击*增伤区间-防御）*最终伤害区间
+    // 增伤区间：各种伤害增益buff
+    let dmgMult = 1.0;
     if(target && att.passive && att.passive.type==='slay' && target.hp/target.maxHp < att.passive.threshold){
-      raw*=1+(att.passive.bonus||0);
+      dmgMult *= 1+(att.passive.bonus||0);
     }
     // 混伤精通：魔法伤害+20%，物理伤害+10%
     if(att.passive && att.passive.type==='hybridBoost'){
-      raw *= magic ? 1.20 : 1.10;
+      dmgMult *= magic ? 1.20 : 1.10;
+    }
+    // 过载：充能高于50%时技能伤害+20%
+    if(att.passive && att.passive.type==='overcharge'){
+      const need=att.ultNeed||ULT_THRESHOLD;
+      if(att.energy >= need*0.5){
+        dmgMult *= 1.20;
+      }
     }
     // 盾击：拥有护盾时技能伤害+20%
     if(att.passive && att.passive.type==='shieldSmash' && att.shield > 0){
-      raw *= 1.20;
+      const boost = att._shieldOverride || att.passive.boost || 0.20;
+      dmgMult *= (1 + boost);
     }
-    raw*=extraMult||1;
-    if(game && game.weather) raw*=this.weatherDmgMult(game, att.attr);
-    // 疲劳机制伤害加成
+    // 计算基础伤害 = 倍率*攻击*增伤区间
+    let baseDmg = mult * power * dmgMult;
+    // 减去防御
+    let raw = baseDmg - effectiveResist;
+    // 最终伤害区间：extraMult、天气、疲劳、克制等
+    raw *= extraMult || 1;
+    if(game && game.weather) raw *= this.weatherDmgMult(game, att.attr);
     if(game){ raw *= this.getFatigueMults(game).dmg; }
-    // 保底伤害机制：伤害小于防御/法抗时，造成攻击/魔攻5%伤害
+    // 保底伤害机制：伤害小于0时，造成攻击/魔攻5%伤害
     const minDmg = Math.max(1, Math.round(power * 0.05));
     return Math.max(minDmg, Math.round(raw));
   },
@@ -2907,6 +2956,8 @@ const Engine = {
         src.buffs.push({kind:'atk',pct:-0.15,left:4,src:'冰霜护甲',perm:false});
         this.log(game,'info',tgt.side+'-debuff',`${tgt.name}【冰霜护甲】使 ${src.name} 攻击-15%（2回合）`);
         game.events.push({type:'buff', side:src.side, unitId:src.id, name:'攻击-15%'});
+        tgt.buffs.push({kind:'def',pct:0.06,left:8,src:'冰霜护甲',perm:false});
+        this.log(game,'info',tgt.side+'-buff',`${tgt.name}【冰霜护甲】触发！自身防御+6%（4回合）`);
       }
     }
     // 装备吸血：攻击方回复生命
@@ -2933,6 +2984,9 @@ const Engine = {
     if(!tgt.alive) return amt;
     amt=Math.round(amt*this.weatherHealMult(game));
     if(src && src.gearHealPct) amt=Math.round(amt*(1+src.gearHealPct));
+    // 治疗减益
+    const healDebuffSum=tgt.buffs.filter(b=>b.kind==='healDebuff').reduce((s,b)=>s+Math.abs(b.pct),0);
+    if(healDebuffSum>0){ amt=Math.round(amt*(1-Math.min(0.8,healDebuffSum))); }
     const before=tgt.hp; tgt.hp=Math.min(tgt.maxHp,tgt.hp+amt);
     const real=tgt.hp-before;
     if(real>0){
@@ -2973,17 +3027,43 @@ const Engine = {
           let mult=fx.mult*(fx.hits?1:1);
           const extra = (fx.lowBonusPct!==undefined) ? 1 : 1;
           const magic = this.magicKindFor(actor, fx);
-          let amount=this.calcDamage(actor,t,t,fx.mult,extra,magic,game);
+          actor._shieldOverride = fx.shieldOverride || undefined;
+          let amount=this.calcDamage(actor,t,t,fx.mult,extra,magic,game,fx.ignoreDef,fx.ignoreMdef);
+          actor._shieldOverride = undefined;
           if(counter>1) amount=Math.round(amount*counter);
           const res=this.applyDamage(game,actor,t,amount,{direct:true});
           if(res.dmg>0 && actor.alive && actor.passive && actor.passive.type==='siphon'){
             const heal=Math.max(1,Math.round(res.dmg*(actor.passive.ratio||0)));
             this.applyHeal(game,actor,actor,heal,actor.passive.name);
           }
+          // 剧毒蝎后被动：攻击施加中毒
+          if(res.dmg>0 && actor.alive && actor.passive && actor.passive.type==='poisonAttack' && t.alive){
+            const dotDmg=Math.max(1,Math.round(this.effectiveAtk(actor)*(actor.passive.mult||0.4)));
+            t.buffs.push({kind:'dot',dmg:dotDmg,left:(actor.passive.turns||2)*2,src:actor.passive.name,perm:false});
+            this.log(game,'info',t.side+'-dot',`${t.name} 中毒（每回合 ${dotDmg}，持续 ${actor.passive.turns||2} 回合）`);
+          }
           if(res.dmg>0){
             this.log(game,'dmg',actor.side+'-dmg',`${actor.name} 对 ${t.name} 造成 ${res.dmg} 伤害${counter>1?'（克制 ×1.3）':''}${t.alive?'':'，目标阵亡！'}`);
           }
           out.push({type:'dmg',src:actor.id,tgt:t.id,amount:res.dmg,counter:counter>1});
+          // 条件追加攻击：概率追加
+          if(t.alive && fx.extraHitChance && Math.random()<fx.extraHitChance){
+            const extraAmt=this.calcDamage(actor,t,t,fx.extraHitMult||0.5,1,magic,game);
+            const extraRes=this.applyDamage(game,actor,t,extraAmt,{direct:true});
+            if(extraRes.dmg>0){
+              this.log(game,'dmg',actor.side+'-dmg',`${actor.name} 追加攻击对 ${t.name} 造成 ${extraRes.dmg} 伤害！`);
+              out.push({type:'dmg',src:actor.id,tgt:t.id,amount:extraRes.dmg,counter:false});
+            }
+          }
+          // 条件追加攻击：低血量追加
+          if(t.alive && fx.lowHpExtraHit && (t.hp/t.maxHp) < fx.lowHpExtraHit){
+            const lowAmt=this.calcDamage(actor,t,t,fx.lowHpExtraHitMult||0.5,1,magic,game);
+            const lowRes=this.applyDamage(game,actor,t,lowAmt,{direct:true});
+            if(lowRes.dmg>0){
+              this.log(game,'dmg',actor.side+'-dmg',`${actor.name} 对低血量的 ${t.name} 追加造成 ${lowRes.dmg} 伤害！`);
+              out.push({type:'dmg',src:actor.id,tgt:t.id,amount:lowRes.dmg,counter:false});
+            }
+          }
         }
       }
     } else if(fx.k==='heal'){
@@ -3002,7 +3082,14 @@ const Engine = {
     else if(fx.k==='debuffDef'){ for(const t of realTargets){ if(t.alive) this.addBuff(game,t,'def',-Math.abs(fx.pct),fx.turns,'防御削弱'); } }
     else if(fx.k==='debuffMdef'){ for(const t of realTargets){ if(t.alive) this.addBuff(game,t,'mdef',-Math.abs(fx.pct),fx.turns,'法抗削弱'); } }
     else if(fx.k==='buffMatk'){ for(const t of realTargets){ this.addBuff(game,t,'matk',fx.pct,fx.turns,'魔攻强化'); } }
-    else if(fx.k==='energy'){ for(const t of realTargets){ if(t.alive) this.gainEnergy(game,t,fx.amt); } }
+    else if(fx.k==='energy'){ for(const t of realTargets){ if(t.alive){ if(fx.amt>0){ this.gainEnergy(game,t,fx.amt); } else { t.energy=Math.max(0,t.energy+fx.amt); this.log(game,'energy',t.side+'-e',`${t.name} 充能 ${fx.amt}（剩余 ${t.energy}）`); } } } }
+    else if(fx.k==='buffMdef'){ for(const t of realTargets){ this.addBuff(game,t,'mdef',fx.pct,fx.turns,'法抗强化'); } }
+    else if(fx.k==='stun'){ for(const t of realTargets){ if(t.alive && Math.random()<(fx.chance||0.2)){ t.buffs.push({kind:'stun',left:(fx.turns||1)*2,src:fx.name||'眩晕',perm:false}); this.log(game,'info',t.side+'-stun',`${t.name} 被眩晕！（${fx.turns||1}回合）`); game.events.push({type:'buff',side:t.side,unitId:t.id,name:'眩晕'}); } } }
+    else if(fx.k==='sp'){ this.addSP(game,actor.side,fx.amt,fx.name||'技能'); }
+    else if(fx.k==='flatBuff'){ for(const t of realTargets){ if(t.alive){ const flatVal=Math.round(this.effectiveMatk(t)*(fx.mult||0.1)); t.buffs.push({kind:fx.stat+'Flat',flat:flatVal,left:(fx.turns||2)*2,src:fx.name||'增益',perm:false}); this.log(game,'buff',t.side+'-b',`${t.name} ${fx.stat==='def'?'防御':'法抗'} +${flatVal}（持续 ${fx.turns||2} 回合）`); } } }
+    else if(fx.k==='dot'){ for(const t of realTargets){ if(t.alive && (!fx.chance || Math.random()<fx.chance)){ const dotDmg=Math.max(1,Math.round(this.healPower(actor)*(fx.mult||0.5))); t.buffs.push({kind:'dot',dmg:dotDmg,left:(fx.turns||2)*2,src:fx.name||'持续伤害',perm:false}); this.log(game,'info',t.side+'-dot',`${t.name} 被施加持续伤害（每回合 ${dotDmg}，持续 ${fx.turns||2} 回合）`); } } }
+    else if(fx.k==='debuffHeal'){ for(const t of realTargets){ if(t.alive){ t.buffs.push({kind:'healDebuff',pct:-(Math.abs(fx.pct)),left:(fx.turns||2)*2,src:fx.name||'治疗削弱',perm:false}); this.log(game,'info',t.side+'-debuff',`${t.name} 治疗效果 -${Math.round(Math.abs(fx.pct)*100)}%（${fx.turns||2}回合）`); } } }
+    else if(fx.k==='debuffMatk'){ for(const t of realTargets){ if(t.alive) this.addBuff(game,t,'matk',-Math.abs(fx.pct),fx.turns,'魔攻削弱'); } }
     return out;
   },
 
@@ -3101,12 +3188,41 @@ const Engine = {
       const sk=unit.skills.find(s=>s.key===act.skillKey);
       side.sp-=sk.cost;
       this.log(game,'sp',unit.side+'-sp',`消耗 ${sk.cost} 支援点（剩余 ${side.sp}），${unit.name} 充能 +${sk.cost}`);
+      // 顺风：每次消耗支援点时，己方有tailwind被动的角色20%概率返还1点
+      const tailwindUnits=game.sides[unit.side].units.filter(x=>x.alive && x.passive && x.passive.type==='tailwind');
+      for(const tw of tailwindUnits){
+        if(Math.random() < (tw.passive.ratio||0.20)){
+          this.addSP(game,unit.side,1,tw.passive.name);
+          this.log(game,'info',unit.side+'-sp',`${tw.name}【顺风】触发！返还1点支援点`);
+        }
+      }
       this.gainEnergy(game,unit,sk.cost);
       if(sk.cd){
         unit.cd[sk.key]=sk.cd;
         this.log(game,'info',unit.side+'-cd',`「${sk.name}」进入冷却（${sk.cd} 阶段）`);
       }
-      for(const fx of sk.fx) this.applyFx(game,unit,fx,targetId);
+      // 连击精通：翠影释放有hits的技能时，可额外消耗支援点增加连击数
+      let extraHits=0;
+      if(unit.passive && unit.passive.type==='comboSpend'){
+        const hasHitsFx = sk.fx.some(fx=>fx.hits && fx.hits>1);
+        if(hasHitsFx && side.sp>0){
+          // 最多额外消耗3点支援点
+          const maxExtra=Math.min(3, side.sp);
+          extraHits=maxExtra;
+          side.sp-=extraHits;
+          this.gainEnergy(game,unit,extraHits);
+          this.log(game,'info',unit.side+'-sp',`${unit.name}【连击精通】消耗 ${extraHits} 点支援点，增加 ${extraHits} 次连击和充能`);
+        }
+      }
+      for(const fx of sk.fx){
+        if(fx.hits && fx.hits>1 && unit.passive && unit.passive.type==='comboSpend'){
+          // 复制fx并增加hits
+          const modifiedFx={...fx, hits:fx.hits+extraHits};
+          this.applyFx(game,unit,modifiedFx,targetId);
+        } else {
+          this.applyFx(game,unit,fx,targetId);
+        }
+      }
       if(sk.summon) this.spawnUnit(game, unit.side, sk.summon.defId, unit, sk.summon.max);
       this.firePassive('afterSkill',game,{unit});
     } else if(act.type==='ultimate'){
@@ -3265,20 +3381,26 @@ const clamp = (v,a,b)=>Math.max(a,Math.min(b,v));
 function pixelAvatarHtml(role, attr, charId){
   // 角色专属外观数据库 - 每个角色独特外观
   const LOOKS = {
-    // ===== 我方英雄 12名 =====
+    // ===== 我方英雄 18名 =====
     ailin:  {skin:'#ffd9b3', hair:'#e63946', hairStyle:'short',  cloth:'#c1121f', weapon:'sword',  accent:'#ffd700'},
     nuoer:  {skin:'#f5d0c5', hair:'#2b2d42', hairStyle:'long',   cloth:'#6a0572', weapon:'staff',  accent:'#9d4edd'},
     wila:   {skin:'#e8c39e', hair:'#2d6a4f', hairStyle:'braid',  cloth:'#40916c', weapon:'shield', accent:'#95d5b2'},
     feiona: {skin:'#ffe0c4', hair:'#f4a261', hairStyle:'twin',   cloth:'#52b788', weapon:'book',   accent:'#d8f3dc'},
     sailin: {skin:'#ffd6cc', hair:'#1d3557', hairStyle:'pony',   cloth:'#457b9d', weapon:'mace',   accent:'#a8dadc'},
     luoka:  {skin:'#e0b088', hair:'#14213d', hairStyle:'spiky',  cloth:'#1d3557', weapon:'spear',  accent:'#f1faee'},
-    ji:     {skin:'#f0c8a0', hair:'#fca311', hairStyle:'mohawk', cloth:'#14213d', weapon:'dagger', accent:'#ffb703'},
-    qianyi: {skin:'#ffd9b3', hair:'#8338ec', hairStyle:'long',   cloth:'#3a0ca3', weapon:'katana', accent:'#c77dff'},
+    jifeng: {skin:'#f0c8a0', hair:'#fca311', hairStyle:'mohawk', cloth:'#14213d', weapon:'dagger', accent:'#ffb703'},
+    qiandai:{skin:'#ffd9b3', hair:'#8338ec', hairStyle:'long',   cloth:'#3a0ca3', weapon:'katana', accent:'#c77dff'},
     fulei:  {skin:'#e8c39e', hair:'#006400', hairStyle:'short',  cloth:'#2d6a4f', weapon:'bow',    accent:'#95d5b2'},
     yien:   {skin:'#ffe0c4', hair:'#90e0ef', hairStyle:'twin',   cloth:'#0077b6', weapon:'flute',  accent:'#caf0f8'},
     aoge:   {skin:'#c9a87c', hair:'#3d2914', hairStyle:'bald',   cloth:'#6f4e37', weapon:'hammer', accent:'#d4a373'},
     kaya:   {skin:'#e0b088', hair:'#5a189a', hairStyle:'hood',   cloth:'#3c096c', weapon:'orb',    accent:'#9d4edd'},
-    // ===== 敌方 20名 =====
+    yanlong:{skin:'#e8c39e', hair:'#ff4500', hairStyle:'flame',  cloth:'#8b0000', weapon:'claw',   accent:'#ffd700'},
+    cuiying:{skin:'#ffe0c4', hair:'#228b22', hairStyle:'long',   cloth:'#1a472a', weapon:'dagger', accent:'#90ee90'},
+    xuanbing:{skin:'#e0ffff',hair:'#b0e0e6', hairStyle:'frozen', cloth:'#4682b4', weapon:'shield', accent:'#afeeee'},
+    zidian: {skin:'#f5d0c5', hair:'#8b00ff', hairStyle:'spiky',  cloth:'#4b0082', weapon:'orb',    accent:'#da70d6'},
+    xiangkong:{skin:'#ffe0c4',hair:'#87ceeb',hairStyle:'pony',   cloth:'#00bfff', weapon:'staff',  accent:'#e0ffff'},
+    yankai: {skin:'#c9a87c', hair:'#3d2914', hairStyle:'mohawk', cloth:'#6f4e37', weapon:'fist',   accent:'#d2691e'},
+    // ===== 敌方 =====
     beast_fire:   {skin:'#8b4513', hair:'#ff4500', hairStyle:'flame',  cloth:'#8b0000', weapon:'claw',   accent:'#ff6347'},
     beast_grass:  {skin:'#556b2f', hair:'#228b22', hairStyle:'leaf',   cloth:'#2e4d1a', weapon:'horn',   accent:'#90ee90'},
     beast_water:  {skin:'#4682b4', hair:'#00ced1', hairStyle:'wave',   cloth:'#000080', weapon:'fin',    accent:'#87ceeb'},
