@@ -1218,16 +1218,16 @@ button{font-family:inherit}
     <p>
       <b>基本流程：</b>选择4名初始角色 → 逐层挑战 → 每关结束后进入装备调整界面 → 选择是否继续下一关。共50层，通关后获得随机徽章。<br>
       <b>敌人数量：</b>1-15层3人，16-30层4人，31-45层5人，46-50层6人。敌方最多刷新1个坦克。<br>
-      <b>敌人成长：</b>攻击系数=0.70+层数×0.058，血量系数=0.75+层数×0.030，防御系数=0.75+层数×0.017。人数增加时单人难度降低（4人×0.85，5人×0.75，6人×0.68）。46-50层为强度挑战关卡。
+      <b>敌人成长：</b>攻击/血量/防御系数统一=0.70+层数×0.058，30层后每层额外+2%。人数增加时单人难度降低（4人×0.85，5人×0.75，6人×0.68）。46-50层为强度挑战关卡。
     </p>
     <h4 style="margin:10px 0 4px">装备掉落规则</h4>
     <p>
-      每层掉落3件装备，每件固定3个随机词条。掉落等级按层数区间随机：<br>
-      • 1-3层：Lv.1-2，装备名称 <span style="color:#e5e7eb">白色（普通）</span><br>
-      • 4-8层：Lv.3-4，装备名称 <span style="color:#4ade80">绿色（精良）</span><br>
-      • 9-15层：Lv.5-6，装备名称 <span style="color:#60a5fa">蓝色（稀有）</span><br>
-      • 16-24层：Lv.7-8，装备名称 <span style="color:#c084fc">紫色（史诗）</span><br>
-      • 25层后：Lv.9-10，装备名称 <span style="color:#fbbf24">金色（传说）</span><br>
+      每层掉落3件装备（30层后4件），每件固定3个随机词条。掉落等级按层数区间随机：<br>
+      • 1-4层：Lv.1-2，装备名称 <span style="color:#e5e7eb">白色（普通）</span><br>
+      • 5-11层：Lv.3-4，装备名称 <span style="color:#4ade80">绿色（精良）</span><br>
+      • 12-20层：Lv.5-6，装备名称 <span style="color:#60a5fa">蓝色（稀有）</span><br>
+      • 21-32层：Lv.7-8，装备名称 <span style="color:#c084fc">紫色（史诗）</span><br>
+      • 33层后：Lv.9-10，装备名称 <span style="color:#fbbf24">金色（传说）</span><br>
       <b>词条颜色：</b>按词条数值在对应掉落等级浮动范围内的位置分5档（0-20%白、20-40%绿、40-60%蓝、60-80%紫、80-100%金），掉落时固定不随强化变化。<br>
       <b>特殊词条解锁：</b>🩸吸血16层后掉落，🔄反伤30层后掉落。
     </p>
@@ -1236,7 +1236,7 @@ button{font-family:inherit}
       <b>强化：</b>最高50级，成长率递减（Lv.1为8%，Lv.50为1%），强化到50级总倍数约6.94x。百分比词条成长率减半。<br>
       <b>强化费用：</b>10×1.05^(等级-1)，50级总费用约1984金币。<br>
       <b>售卖：</b>1级装备30金币，其他等级约强化总费用的110%，保证强化后售卖不亏。<br>
-      <b>金币获取：</b>每层战斗获得20+层数×18+随机(0-29)金币。45层总金币（含售卖）约24700，可强化12个装备至50级。
+      <b>金币获取：</b>每层战斗获得10+层数×18+随机(0-29)金币。
     </p>
     <h4 style="margin:10px 0 4px">徽章系统</h4>
     <p>
@@ -1687,7 +1687,7 @@ button{font-family:inherit}
           <span style="color:#c084fc">🟪 60-80%分位</span>
           <span style="color:#fbbf24">🟨 80-100%分位</span>
         </div>
-        <div><b>词条生成规则：</b>每件装备固定3个随机词条，词条数值在对应等级的浮动范围内随机生成。16层后可掉落🩸吸血词条，30层后可掉落🔄反伤词条。装备掉落等级随层数提升：2+层数/2级（最高10级），显示等级为1级但实际属性为掉落等级。</div>
+        <div><b>词条生成规则：</b>每件装备固定3个随机词条，词条数值在对应等级的浮动范围内随机生成。16层后可掉落🩸吸血词条，30层后可掉落🔄反伤词条。装备掉落等级随层数区间提升（最高10级），显示等级为1级但实际属性为掉落等级。</div>
         <div style="margin-top:4px"><b>强化：</b>装备最高可强化至50级，强化提升词条数值（递减成长率），不改变词条颜色。售卖价格约为强化总费用的110%。</div>
       </div>
       <div class="gear-affix-grid" id="gear-affix-grid" data-doubao-translate-traverse-mark="1" data-scu-ref="e343"><div class="affix-codex" data-scu-ref="e344"><h5 data-scu-ref="e345">❤️ 生命</h5><p data-scu-ref="e346">直接提高生命上限</p>
@@ -1813,10 +1813,10 @@ function getAffixRange(key, level){
 // 根据层数获取合并的掉落等级范围
 function getMergedLevelRange(floor){
   const f = floor || 1;
-  if(f <= 3) return {min:1, max:2};
-  if(f <= 8) return {min:3, max:4};
-  if(f <= 15) return {min:5, max:6};
-  if(f <= 24) return {min:7, max:8};
+  if(f <= 4) return {min:1, max:2};
+  if(f <= 11) return {min:3, max:4};
+  if(f <= 20) return {min:5, max:6};
+  if(f <= 32) return {min:7, max:8};
   return {min:9, max:10};
 }
 // 获取合并等级范围内的词条浮动范围（min等级的最小值 ~ max等级的最大值）
@@ -1868,10 +1868,10 @@ function rollGearDrop(level, floor){
   // 按层数分5个层次，用颜色区分装备名称（仅区分层数产出）
   const f = floor || 1;
   let tier = 0;
-  if(f >= 25) tier = 4;      // 金
-  else if(f >= 16) tier = 3; // 紫
-  else if(f >= 9) tier = 2;  // 蓝
-  else if(f >= 4) tier = 1;  // 绿
+  if(f >= 33) tier = 4;      // 金
+  else if(f >= 21) tier = 3; // 紫
+  else if(f >= 12) tier = 2; // 蓝
+  else if(f >= 5) tier = 1;  // 绿
   else tier = 0;             // 白
   const tierColors = ['#e5e7eb','#4ade80','#60a5fa','#c084fc','#fbbf24'];
   const tierNames = ['普通','精良','稀有','史诗','传说'];
@@ -4783,10 +4783,12 @@ function renderRlSelect(){
 }
 
 function generateRlEnemies(floor){
-  // 基础成长曲线
-  let baseAtk = 0.70 + floor * 0.058;
-  let baseHp = 0.75 + floor * 0.030;
-  let baseDef = 0.75 + floor * 0.017;
+  // 基础成长曲线：三属性统一公式，30层后额外增加
+  let baseUnified = 0.70 + floor * 0.058;
+  if(floor > 30) baseUnified += (floor - 30) * 0.02; // 30层后每层额外+2%
+  let baseAtk = baseUnified;
+  let baseHp = baseUnified;
+  let baseDef = baseUnified;
   
   // 敌人数量：1-15层3人，16-30层4人，31-45层5人，46-50层6人
   let enemyCount;
@@ -4909,7 +4911,7 @@ function startRlBattle(){
 function onRlBattleEnd(victory){
   if(victory){
     // 计算金币奖励
-    const goldEarned = 20 + UI.rl.floor * 18 + Math.floor(Math.random()*30);
+    const goldEarned = 10 + UI.rl.floor * 18 + Math.floor(Math.random()*30);
     UI.rl.gold += goldEarned;
     UI.rl.totalGold += goldEarned;
     $('rl-gold-earned').textContent = goldEarned;
@@ -4919,13 +4921,13 @@ function onRlBattleEnd(victory){
     // 按层数区间确定掉落等级范围
     const f = UI.rl.floor;
     let dropLevelMin, dropLevelMax;
-    if(f <= 3) { dropLevelMin = 1; dropLevelMax = 2; }
-    else if(f <= 8) { dropLevelMin = 3; dropLevelMax = 4; }
-    else if(f <= 15) { dropLevelMin = 5; dropLevelMax = 6; }
-    else if(f <= 24) { dropLevelMin = 7; dropLevelMax = 8; }
+    if(f <= 4) { dropLevelMin = 1; dropLevelMax = 2; }
+    else if(f <= 11) { dropLevelMin = 3; dropLevelMax = 4; }
+    else if(f <= 20) { dropLevelMin = 5; dropLevelMax = 6; }
+    else if(f <= 32) { dropLevelMin = 7; dropLevelMax = 8; }
     else { dropLevelMin = 9; dropLevelMax = 10; }
     const dropLevel = dropLevelMin + Math.floor(Math.random() * (dropLevelMax - dropLevelMin + 1));
-    const dropCount = 3; // 所有关卡均掉落3件装备
+    const dropCount = (UI.rl.floor >= 30) ? 4 : 3; // 30层后掉落4件装备
     for(let i=0;i<dropCount;i++){
       const it = E.rollGearDrop(dropLevel, UI.rl.floor);
       it.uid = 'rl_' + Date.now() + '_' + i + '_' + Math.random().toString(36).substr(2,5);
@@ -5359,7 +5361,7 @@ function sellRlGear(idx){
     <div style="color:var(--muted);margin-bottom:16px">获得金币：<span id="rl-gold-earned" style="color:#fbbf24;font-weight:700">0</span> 💰</div>
     <div style="font-size:16px;font-weight:700;margin-bottom:12px;margin-top:8px">📊 战斗结算</div>
     <div id="rl-battle-stats" style="background:rgba(0,0,0,.3);border-radius:10px;padding:12px;margin-bottom:16px;font-size:13px"></div>
-    <div style="font-size:16px;font-weight:700;margin-bottom:12px">装备掉落（3件）</div>
+    <div style="font-size:16px;font-weight:700;margin-bottom:12px">装备掉落</div>
     <div class="rl-drop-grid" id="rl-drop-grid"></div>
     <div style="display:flex;gap:12px;justify-content:center;margin-top:20px">
       <button class="big-btn primary" id="rl-next-btn">继续下一层 →</button>
