@@ -2743,7 +2743,8 @@ const Engine = {
           const allies=this.unitsOf(game,u.side).filter(a=>a.alive);
           if(allies.length){
             const t=allies.sort((a,b)=>(a.hp/a.maxHp)-(b.hp/b.maxHp))[0];
-            const shieldAmt=Math.max(1,Math.round(this.healPower(u)*(p.mult||0.5)));
+            let shieldAmt=Math.max(1,Math.round(this.healPower(u)*(p.mult||0.5)));
+            if(game){ shieldAmt=Math.max(1,Math.round(shieldAmt*this.getFatigueMults(game).shield)); }
             t.shield=(t.shield||0)+shieldAmt;
             this.log(game,'info',u.side+'-shield',`${u.name}【${p.name}】为 ${t.name} 添加 ${shieldAmt} 护盾`);
             game.events.push({type:'shield', side:t.side, unitId:t.id, amount:shieldAmt});
@@ -2841,16 +2842,18 @@ const Engine = {
     this.log(game,'energy',unit.side+'-e',`${unit.name} 充能 +${amount}（${unit.energy}/${unit.ultNeed||ULT_THRESHOLD}）`);
   },
 
-  // 疲劳机制：第10回合后伤害递增（上限300%）、治疗衰减（趋近50%），防止坦克互殴
+  // 疲劳机制：第10回合后伤害递增（上限300%）、治疗衰减（108回合≈50%）、护盾衰减（108回合≈60%）
   getFatigueMults(game){
-    if(!game || !game.phaseCount || game.phaseCount < 10) return {dmg:1, heal:1};
+    if(!game || !game.phaseCount || game.phaseCount < 10) return {dmg:1, heal:1, shield:1};
     const t = game.phaseCount - 9; // 第10回合t=1
-    // 伤害：第10回合110%，之后每回合+5%，上限300%
-    const dmg = Math.min(3.0, 1.10 + (t - 1) * 0.05);
-    // 治疗：指数衰减趋近50%，第10回合95%
-    const k = 0.10536; // -ln(0.9)，使第10回合恰好95%
+    // 伤害：原公式，第10回合105%，每回合+2%，上限300%（约第108回合达到）
+    const dmg = Math.min(3.0, 1 + 0.05 + (t - 1) * 0.02);
+    // 治疗：指数衰减趋近50%，k=0.04使第108回合(t=99)约51%
+    const k = 0.04;
     const heal = 0.5 + 0.5 * Math.exp(-k * t);
-    return {dmg, heal};
+    // 护盾：指数衰减趋近60%，k=0.04使第108回合(t=99)约61%
+    const shield = 0.6 + 0.4 * Math.exp(-k * t);
+    return {dmg, heal, shield};
   },
 
   calcDamage(att,def,target,mult,extraMult,magic,game,ignoreDef,ignoreMdef){
@@ -3073,7 +3076,8 @@ const Engine = {
       const amt=Math.round((actor.maxHp-actor.hp)*fx.ratio);
       this.applyHeal(game,actor,actor,amt,'潮汐回涌');
     } else if(fx.k==='shield'){
-      const v = fx.v!==undefined?fx.v:Math.round(this.healPower(actor)*(fx.mult||1));
+      let v = fx.v!==undefined?fx.v:Math.round(this.healPower(actor)*(fx.mult||1));
+      if(game){ v = Math.max(1, Math.round(v * this.getFatigueMults(game).shield)); }
       for(const t of realTargets){ if(t.alive){ t.shield=(t.shield||0)+v;
         this.log(game,'heal',t.side+'-shield',`${t.name} 获得 ${v} 护盾`); } }
     } else if(fx.k==='buffAtk'){ for(const t of realTargets){ this.addBuff(game,t,'atk',fx.pct,fx.turns,'攻击强化'); } }
